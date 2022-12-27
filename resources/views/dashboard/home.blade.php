@@ -4,389 +4,355 @@
 
 @section('content')
 
-    <!-- start page title -->
-    <div class="row">
-        <div class="col-12">
-            <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                <h4 class="mb-sm-0 font-size-18">{{ __('lang.dashboard') }}</h4>
+<div class="col-12">
+    <div class="row align-items-center mb-2">
+      <div class="col">
+        <h2 class="h5 page-title">Welcome!</h2>
+      </div>
+      <div class="col-auto">
+        <form class="form-inline">
+          <div class="form-group d-none d-lg-inline">
+            <label for="reportrange" class="sr-only">Date Ranges</label>
+            <div id="reportrange" class="px-2 py-2 text-muted">
+              <span class="small"></span>
             </div>
-        </div>
+          </div>
+          <div class="form-group">
+            <button type="button" class="btn btn-sm"><span class="fe fe-refresh-ccw fe-16 text-muted"></span></button>
+            <button type="button" class="btn btn-sm mr-2"><span class="fe fe-filter fe-16 text-muted"></span></button>
+          </div>
+        </form>
+      </div>
     </div>
-    <!-- end page title -->
-
-    <!-- profile & tiny stats -->
-    <div class="card overflow-hidden">
-        <div class="bg-primary bg-soft">
-            <div class="row">
-                <div class="col-12">
-                    <div class="text-primary p-4">
-                        <h5 class="text-primary">{{ __('lang.welcome_back') }} {{ Auth::guard('admin')->user()?->nameOnHeader() }}</h5>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="card-body pt-0">
-            <div class="row">
-                <div class="col-sm-4 col-md-2 border">
-                    <div class="avatar-md profile-user-wid mb-1">
-                        <img src="{{ asset('assets') }}/logo/avatar.png" alt="" class="img-thumbnail rounded-circle">
-                    </div>
-                    <h5 class="font-size-15 text-truncate">{{ Auth::guard('admin')->user()?->nameOnHeader() }}</h5>
-                </div>
-
-                <div class="col-sm-8 col-md-10 border">
-                    <div class="pt-4">
-                        <div class="row">
-                            <div class="col-2">
-                                <a href="{{ route('admin.contracts.index') }}">
-                                    <h5 class="font-size-15">{{ $contractsCount['ALL'] }}</h5>
-                                    <p class="text-muted mb-0">{{ __('lang.all_contracts') }}</p>
-                                </a>
-                            </div>
-
-                            @foreach($contractsStatus as $status)
-                                <div class="col-2">
-                                    <a href="{{ route('admin.contracts.index',['status'=>$status->value]) }}">
-                                        <h5 class="font-size-15">{{ $contractsCount[$status->name] }}</h5>
-                                        <p class="text-muted mb-0">{{ $status->lang() }}</p>
-                                    </a>
-                                </div>
-                            @endforeach
-
-                            <div class="col-2">
-                                <a href="{{ route('admin.profile') }}" class="btn btn-primary waves-effect waves-light btn-sm">{{ __('lang.profile') }} <i class="mdi mdi-arrow-right ms-1"></i></a>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- General stats -->
-    <div class="card">
+    <div class="mb-2 align-items-center">
+      <div class="card shadow mb-4">
         <div class="card-body">
-            <h4 class="card-title mb-4">{{ __('lang.general_stats') }}</h4>
-
-            <div class="row">
-                <div class="col-12 col-md-4 border-primary border-end">
-                    <div class="table-responsive">
-                        <table class="table align-middle table-nowrap">
-                            <tbody>
-                                <tr>
-                                    <td style="width: 75%">
-                                        <p class="mb-0">{{ __('lang.all_contracts') }}</p>
-                                    </td>
-                                    <td style="width: 25%">
-                                        <h6 class="mb-0">{{ $contractsCount['ALL'] }}</h6>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="width: 75%">
-                                        <p class="mb-0">{{ __('lang.approved_contracts_home') }}</p>
-                                    </td>
-                                    <td style="width: 25%">
-                                        <h6 class="mb-0">{{ $contractsCount['APPROVED'] }}</h6>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="width: 75%">
-                                        <p class="mb-0">{{ __('lang.completed_contracts_home') }}</p>
-                                    </td>
-                                    <td style="width: 25%">
-                                        <h6 class="mb-0">{{ $contractsCount['COMPLETED'] }}</h6>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <div class="col-12 col-md-4 border-primary border-end">
-                    <div class="table-responsive">
-                        <table class="table align-middle table-nowrap">
-                            <tbody>
-                                <tr>
-                                    <td style="width: 75%">
-                                        <p class="mb-0">{{ __('lang.all_installments') }}</p>
-                                    </td>
-                                    <td style="width: 25%">
-                                        <h6 class="mb-0">{{ $installmentsStats['count'] }}</h6>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="width: 75%">
-                                        <p class="mb-0">{{ __('lang.installments_paid_amount') }}</p>
-                                    </td>
-                                    <td style="width: 25%">
-                                        <h6 class="mb-0">{{ $installmentsStats['paid'] }}</h6>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="width: 75%">
-                                        <p class="mb-0">{{ __('lang.installments_rest_amount') }}</p>
-                                    </td>
-                                    <td style="width: 25%">
-                                        <h6 class="mb-0">{{ $installmentsStats['rest'] }}</h6>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <div class="col-12 col-md-4">
-                    <div class="table-responsive">
-                        <table class="table align-middle table-nowrap">
-                            <tbody>
-                                <tr>
-                                    <td style="width: 75%">
-                                        <p class="mb-0">{{ __('lang.total_before_discount') }}</p>
-                                    </td>
-                                    <td style="width: 25%">
-                                        <h6 class="mb-0">{{ $installmentsTotal['before'] }}</h6>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="width: 75%">
-                                        <p class="mb-0">{{ __('lang.total_after_discount') }}</p>
-                                    </td>
-                                    <td style="width: 25%">
-                                        <h6 class="mb-0">{{ $installmentsTotal['after'] }}</h6>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="width: 75%">
-                                        <p class="mb-0">{{ __('lang.total_payments') }}</p>
-                                    </td>
-                                    <td style="width: 25%">
-                                        <h6 class="mb-0">{{ $paymentsTotal }}</h6>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+          <div class="row mt-1 align-items-center">
+            <div class="col-12 col-lg-4 text-left pl-4">
+              <p class="mb-1 small text-muted">Balance</p>
+              <span class="h3">$12,600</span>
+              <span class="small text-muted">+20%</span>
+              <span class="fe fe-arrow-up text-success fe-12"></span>
+              <p class="text-muted mt-2"> Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui </p>
             </div>
-        </div>
+            <div class="col-6 col-lg-2 text-center py-4">
+              <p class="mb-1 small text-muted">Today</p>
+              <span class="h3">$2600</span><br />
+              <span class="small text-muted">+20%</span>
+              <span class="fe fe-arrow-up text-success fe-12"></span>
+            </div>
+            <div class="col-6 col-lg-2 text-center py-4 mb-2">
+              <p class="mb-1 small text-muted">Goal Value</p>
+              <span class="h3">$260</span><br />
+              <span class="small text-muted">+6%</span>
+              <span class="fe fe-arrow-up text-success fe-12"></span>
+            </div>
+            <div class="col-6 col-lg-2 text-center py-4">
+              <p class="mb-1 small text-muted">Completions</p>
+              <span class="h3">26</span><br />
+              <span class="small text-muted">+20%</span>
+              <span class="fe fe-arrow-up text-success fe-12"></span>
+            </div>
+            <div class="col-6 col-lg-2 text-center py-4">
+              <p class="mb-1 small text-muted">Conversion</p>
+              <span class="h3">6%</span><br />
+              <span class="small text-muted">-2%</span>
+              <span class="fe fe-arrow-down text-danger fe-12"></span>
+            </div>
+          </div>
+          <div class="chartbox mr-4">
+            <div id="areaChart"></div>
+          </div>
+        </div> <!-- .card-body -->
+      </div> <!-- .card -->
     </div>
-    <!-- end row -->
-
-    <!-- Latest Contracts -->
-    @if (permission(['list_contracts']))
+    <div class="row items-align-baseline">
+      <div class="col-md-12 col-lg-4">
+        <div class="card shadow eq-card mb-4">
+          <div class="card-body mb-n3">
+            <div class="row items-align-baseline h-100">
+              <div class="col-md-6 my-3">
+                <p class="mb-0"><strong class="mb-0 text-uppercase text-muted">Earning</strong></p>
+                <h3>$2,562</h3>
+                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              </div>
+              <div class="col-md-6 my-4 text-center">
+                <div lass="chart-box mx-4">
+                  <div id="radialbarWidget"></div>
+                </div>
+              </div>
+              <div class="col-md-6 border-top py-3">
+                <p class="mb-1"><strong class="text-muted">Cost</strong></p>
+                <h4 class="mb-0">108</h4>
+                <p class="small text-muted mb-0"><span>37.7% Last week</span></p>
+              </div> <!-- .col -->
+              <div class="col-md-6 border-top py-3">
+                <p class="mb-1"><strong class="text-muted">Revenue</strong></p>
+                <h4 class="mb-0">1168</h4>
+                <p class="small text-muted mb-0"><span>-18.9% Last week</span></p>
+              </div> <!-- .col -->
+            </div>
+          </div> <!-- .card-body -->
+        </div> <!-- .card -->
+      </div> <!-- .col -->
+      <div class="col-md-12 col-lg-4">
+        <div class="card shadow eq-card mb-4">
+          <div class="card-body">
+            <div class="chart-widget mb-2">
+              <div id="radialbar"></div>
+            </div>
+            <div class="row items-align-center">
+              <div class="col-4 text-center">
+                <p class="text-muted mb-1">Cost</p>
+                <h6 class="mb-1">$1,823</h6>
+                <p class="text-muted mb-0">+12%</p>
+              </div>
+              <div class="col-4 text-center">
+                <p class="text-muted mb-1">Revenue</p>
+                <h6 class="mb-1">$6,830</h6>
+                <p class="text-muted mb-0">+8%</p>
+              </div>
+              <div class="col-4 text-center">
+                <p class="text-muted mb-1">Earning</p>
+                <h6 class="mb-1">$4,830</h6>
+                <p class="text-muted mb-0">+8%</p>
+              </div>
+            </div>
+          </div> <!-- .card-body -->
+        </div> <!-- .card -->
+      </div> <!-- .col -->
+      <div class="col-md-12 col-lg-4">
+        <div class="card shadow eq-card mb-4">
+          <div class="card-body">
+            <div class="d-flex mt-3 mb-4">
+              <div class="flex-fill pt-2">
+                <p class="mb-0 text-muted">Total</p>
+                <h4 class="mb-0">108</h4>
+                <span class="small text-muted">+37.7%</span>
+              </div>
+              <div class="flex-fill chart-box mt-n2">
+                <div id="barChartWidget"></div>
+              </div>
+            </div> <!-- .d-flex -->
+            <div class="row border-top">
+              <div class="col-md-6 pt-4">
+                <h6 class="mb-0">108 <span class="small text-muted">+37.7%</span></h6>
+                <p class="mb-0 text-muted">Cost</p>
+              </div>
+              <div class="col-md-6 pt-4">
+                <h6 class="mb-0">1168 <span class="small text-muted">-18.9%</span></h6>
+                <p class="mb-0 text-muted">Revenue</p>
+              </div>
+            </div> <!-- .row -->
+          </div> <!-- .card-body -->
+        </div> <!-- .card -->
+      </div> <!-- .col-md -->
+    </div>
     <div class="row">
-        <div class="col-lg-12">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title mb-4">{{ __('lang.latest_contracts') }}</h4>
-                    <div class="table-responsive">
-                        <table class="table align-middle table-nowrap font-size-14">
-                            <thead class="table-light">
-                                <tr>
-                                    <th width="5%">#</th>
-                                    <th>{{ __('lang.id') }}</th>
-                                    <th>{{ __('lang.user') }}</th>
-                                    <th>{{ __('lang.start_date') }}</th>
-                                    <th>{{ __('lang.installments') }}</th>
-                                    <th>{{ __('lang.before_discount') }}</th>
-                                    <th>{{ __('lang.after_discount') }}</th>
-                                    <th>{{ __('lang.discount') }}</th>
-                                    <th>{{ __('lang.first_payment') }}</th>
-                                    <th>{{ __('lang.credit_bank') }}</th>
-                                    <th>{{ __('lang.debit_bank') }}</th>
-                                    <th>{{ __('lang.status') }}</th>
-                                </tr>
-                            </thead>
-
-                            <tbody>
-                                @if(count($latestContracts) > 0)
-                                    @foreach ($latestContracts as $key => $item)
-                                        <tr>
-                                            <td>{{ $loop->index + 1 }}</td>
-                                            <td>
-                                                <strong class="text-primary">
-                                                    {{ $item->id??'--' }}
-                                                </strong>
-                                            </td>
-                                            <td>{{ $item->user?->name }}</td>
-                                            <td>{{ $item->startDate() }}</td>
-                                            <td>{{ $item->installments }}</td>
-                                            <td>{{ $item->contractDetails?->total_before }} {{currency($item)}}</td>
-                                            <td>{{ $item->contractDetails?->total_after }} {{currency($item)}}</td>
-                                            <td>{{ $item->discount() }} {{currency($item)}}</td>
-                                            <td>{{ $item->contractDetails?->first_payment_amount_before }} {{currency($item)}}</td>
-                                            <td>{{ $item->credit() }} {{currency($item)}}</td>
-                                            <td>{{ $item->debit() }} {{currency($item)}}</td>
-                                            <td>
-                                                <span class="badge {{ $item->status->color() }}">
-                                                    <i class="{{ $item->status->icon() }} font-size-16 align-middle"></i>
-                                                    {{ $item->status->lang() }}
-                                                </span>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                @else
-                                    <x-empty-alert></x-empty-alert>
-                                @endif
-                            </tbody>
-                        </table>
-                    </div>
-                    <!-- end table-responsive -->
-                </div>
+      <!-- Recent Activity -->
+      <div class="col-md-12 col-lg-4 mb-4">
+        <div class="card timeline shadow">
+          <div class="card-header">
+            <strong class="card-title">Recent Activity</strong>
+            <a class="float-right small text-muted" href="#!">View all</a>
+          </div>
+          <div class="card-body" data-simplebar style="height:355px; overflow-y: auto; overflow-x: hidden;">
+            <h6 class="text-uppercase text-muted mb-4">Today</h6>
+            <div class="pb-3 timeline-item item-primary">
+              <div class="pl-5">
+                <div class="mb-1"><strong>@Brown Asher</strong><span class="text-muted small mx-2">Just create new layout Index, form, table</span><strong>Tiny Admin</strong></div>
+                <p class="small text-muted">Creative Design <span class="badge badge-light">1h ago</span>
+                </p>
+              </div>
             </div>
-        </div>
-    </div>
-    @endif
-
-    <!-- latest installments -->
-    @if (permission(['list_installments']))
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title mb-4">{{ __('lang.latest_installments') }}</h4>
-                    <div class="table-responsive">
-                        <table class="table align-middle table-nowrap font-size-14">
-                            <thead class="table-light">
-                                <tr>
-                                    <th width="5%">#</th>
-                                    <th>{{ __('lang.installment') }}</th>
-                                    <th>{{ __('lang.contract') }}</th>
-                                    <th>{{ __('lang.user') }}</th>
-                                    <th>{{ __('lang.item') }}</th>
-                                    <th>{{ __('lang.due_date') }}</th>
-                                    <th>{{ __('lang.status') }}</th>
-                                    <th>{{ __('lang.price') }}</th>
-                                    <th>{{ __('lang.paid') }}</th>
-                                    <th>{{ __('lang.rest') }}</th>
-                                </tr>
-                            </thead>
-
-                            <tbody>
-                                @if(count($latestInstallments) > 0)
-                                    @foreach ($latestInstallments as $key => $item)
-                                        <tr>
-                                            <td>{{ $loop->index + 1 }}</td>
-                                            <td>
-                                                <strong class="text-primary">
-                                                    {{ $item->id??'--' }}
-                                                </strong>
-                                            </td>
-                                            <td>
-                                                <strong class="text-primary">
-                                                    {{ $item->contract?->id??'--' }}
-                                                </strong>
-                                            </td>
-                                            <td>
-                                                {{ $item->contract->user?->name }}
-                                                <div>
-                                                    {{ __('lang.id_number') }} :
-                                                    <span class="badge badge-soft-primary">
-                                                        {{ $item->contract->user?->id_number }}
-                                                    </span>
-                                                    {{ __('lang.phone1') }} :
-                                                    <span class="badge badge-soft-primary">
-                                                    {{ $item->contract->user?->phone1 }}
-                                                    </span>
-                                                </div>
-                                            </td>
-                                            <td>{{ $item->contract?->item }}</td>
-                                            <td>{{ $item->dueDate() }}</td>
-                                            <td>
-                                                <span class="badge {{ $item->status->color() }}">
-                                                    <i class="{{ $item->status->icon() }} font-size-16 align-middle"></i>
-                                                    {{ $item->status->lang() }}
-                                                </span>
-                                            </td>
-                                            <td>{{ $item->installment_amount_before }} {{currency($item)}}</td>
-                                            <td>{{ $item->paid }} {{currency($item)}}</td>
-                                            <td>{{ $item->rest }} {{currency($item)}}</td>
-                                        </tr>
-                                    @endforeach
-                                @else
-                                    <x-empty-alert></x-empty-alert>
-                                @endif
-                            </tbody>
-                        </table>
-                    </div>
-                    <!-- end table-responsive -->
+            <div class="pb-3 timeline-item item-warning">
+              <div class="pl-5">
+                <div class="mb-3"><strong>@Hester Nissim</strong><span class="text-muted small mx-2">has upload new files to</span><strong>Tiny Admin</strong></div>
+                <div class="row mb-3">
+                  <div class="col"><img src="./assets/products/p1.jpg" alt="..." class="img-fluid rounded"></div>
+                  <div class="col"><img src="./assets/products/p2.jpg" alt="..." class="img-fluid rounded"></div>
+                  <div class="col"><img src="./assets/products/p3.jpg" alt="..." class="img-fluid rounded"></div>
+                  <div class="col"><img src="./assets/products/p4.jpg" alt="..." class="img-fluid rounded"></div>
                 </div>
+                <p class="small text-muted">Front-End Development <span class="badge badge-light">1h ago</span>
+                </p>
+              </div>
             </div>
-        </div>
-    </div>
-    @endif
-
-    <!-- latest payments -->
-    @if (permission(['list_payments']))
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title mb-4">{{ __('lang.latest_payments') }}</h4>
-                    <div class="table-responsive">
-                        <table class="table align-middle table-nowrap font-size-14">
-                            <thead class="table-light">
-                                <tr>
-                                    <th width="5%">#</th>
-                                    <th>{{ __('lang.id') }}</th>
-                                    <th>{{ __('lang.user') }}</th>
-                                    <th>{{ __('lang.date') }}</th>
-                                    <th>{{ __('lang.amount') }}</th>
-                                    <th>{{ __('lang.payment_method') }}</th>
-                                    <th>{{ __('lang.payment_number') }}</th>
-                                    <th>{{ __('lang.payment_type') }}</th>
-                                    <th>{{ __('lang.contract') }}</th>
-                                </tr>
-                            </thead>
-
-                            <tbody>
-                                @if(count($latestPayments) > 0)
-                                    @foreach ($latestPayments as $key => $item)
-                                        <tr>
-                                            <td>{{ $loop->index + 1 }}</td>
-                                            <td>
-                                                <strong class="text-primary">
-                                                    {{ $item->id??'--' }}
-                                                </strong>
-                                            </td>
-                                            <td>{{ $item->user?->name }}</td>
-                                            <td>{{ $item->date() }}</td>
-                                            <td>{{ $item->amount }} {{currency($item)}}</td>
-                                            <td>
-                                                <span class="badge {{ $item->payment_method->color() }}">
-                                                    <i class="{{ $item->payment_method->icon() }} font-size-16 align-middle"></i>
-                                                    {{ $item->payment_method->lang() }}
-                                                </span>
-                                            </td>
-                                            <td>{{ $item->payment_number }}</td>
-                                            <td>
-                                                <span class="badge {{ $item->payment_type->color() }}">
-                                                    <i class="{{ $item->payment_type->icon() }} font-size-16 align-middle"></i>
-                                                    {{ $item->payment_type->lang() }}
-                                                </span>
-                                            </td>
-                                            <td>
-                                                <strong class="text-primary">
-                                                    {{ $item->contract?->id }}
-                                                </strong>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                @else
-                                    <x-empty-alert></x-empty-alert>
-                                @endif
-                            </tbody>
-                        </table>
-                    </div>
-                    <!-- end table-responsive -->
+            <div class="pb-3 timeline-item item-success">
+              <div class="pl-5">
+                <div class="mb-3"><strong>@Kelley Sonya</strong><span class="text-muted small mx-2">has commented on</span><strong>Advanced table</strong></div>
+                <div class="card d-inline-flex mb-2">
+                  <div class="card-body bg-light py-2 px-3 small rounded"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dignissim nulla eu quam cursus placerat. Vivamus non odio ullamcorper, lacinia ante nec, blandit leo. </div>
                 </div>
+                <p class="small text-muted">Back-End Development <span class="badge badge-light">1h ago</span>
+                </p>
+              </div>
             </div>
+            <h6 class="text-uppercase text-muted mb-4">Yesterday</h6>
+            <div class="pb-3 timeline-item item-warning">
+              <div class="pl-5">
+                <div class="mb-3"><strong>@Fletcher Everett</strong><span class="text-muted small mx-2">created new group for</span><strong>Tiny Admin</strong></div>
+                <ul class="avatars-list mb-3">
+                  <li>
+                    <a href="#!" class="avatar avatar-sm">
+                      <img alt="..." class="avatar-img rounded-circle" src="./assets/avatars/face-1.jpg">
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#!" class="avatar avatar-sm">
+                      <img alt="..." class="avatar-img rounded-circle" src="./assets/avatars/face-4.jpg">
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#!" class="avatar avatar-sm">
+                      <img alt="..." class="avatar-img rounded-circle" src="./assets/avatars/face-3.jpg">
+                    </a>
+                  </li>
+                </ul>
+                <p class="small text-muted">Front-End Development <span class="badge badge-light">1h ago</span>
+                </p>
+              </div>
+            </div>
+            <div class="pb-3 timeline-item item-success">
+              <div class="pl-5">
+                <div class="mb-3"><strong>@Bertha Ball</strong><span class="text-muted small mx-2">has commented on</span><strong>Advanced table</strong></div>
+                <div class="card d-inline-flex mb-2">
+                  <div class="card-body bg-light py-2 px-3"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dignissim nulla eu quam cursus placerat. Vivamus non odio ullamcorper, lacinia ante nec, blandit leo. </div>
+                </div>
+                <p class="small text-muted">Back-End Development <span class="badge badge-light">1h ago</span>
+                </p>
+              </div>
+            </div>
+            <div class="pb-3 timeline-item item-danger">
+              <div class="pl-5">
+                <div class="mb-3"><strong>@Lillith Joseph</strong><span class="text-muted small mx-2">has upload new files to</span><strong>Tiny Admin</strong></div>
+                <div class="row mb-3">
+                  <div class="col"><img src="./assets/products/p4.jpg" alt="..." class="img-fluid rounded"></div>
+                  <div class="col"><img src="./assets/products/p1.jpg" alt="..." class="img-fluid rounded"></div>
+                  <div class="col"><img src="./assets/products/p2.jpg" alt="..." class="img-fluid rounded"></div>
+                </div>
+                <p class="small text-muted">Front-End Development <span class="badge badge-light">1h ago</span>
+                </p>
+              </div>
+            </div>
+          </div> <!-- / .card-body -->
+        </div> <!-- / .card -->
+      </div> <!-- / .col-md-6 -->
+      <!-- Striped rows -->
+      <div class="col-md-12 col-lg-8">
+        <div class="card shadow">
+          <div class="card-header">
+            <strong class="card-title">Recent Data</strong>
+            <a class="float-right small text-muted" href="#!">View all</a>
+          </div>
+          <div class="card-body my-n2">
+            <table class="table table-striped table-hover table-borderless">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Address</th>
+                  <th>Date</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>2474</td>
+                  <th scope="col">Brown, Asher D.</th>
+                  <td>Ap #331-7123 Lobortis Avenue</td>
+                  <td>13/09/2020</td>
+                  <td>
+                    <div class="dropdown">
+                      <button class="btn btn-sm dropdown-toggle more-vertical" type="button" id="dr1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="text-muted sr-only">Action</span>
+                      </button>
+                      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dr1">
+                        <a class="dropdown-item" href="#">Edit</a>
+                        <a class="dropdown-item" href="#">Remove</a>
+                        <a class="dropdown-item" href="#">Assign</a>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>2786</td>
+                  <th scope="col">Leblanc, Yoshio V.</th>
+                  <td>287-8300 Nisl. St.</td>
+                  <td>04/05/2019</td>
+                  <td>
+                    <div class="dropdown">
+                      <button class="btn btn-sm dropdown-toggle more-vertical" type="button" id="dr2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="text-muted sr-only">Action</span>
+                      </button>
+                      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dr2">
+                        <a class="dropdown-item" href="#">Edit</a>
+                        <a class="dropdown-item" href="#">Remove</a>
+                        <a class="dropdown-item" href="#">Assign</a>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>2747</td>
+                  <th scope="col">Hester, Nissim L.</th>
+                  <td>4577 Cras St.</td>
+                  <td>04/06/2019</td>
+                  <td>
+                    <div class="dropdown">
+                      <button class="btn btn-sm dropdown-toggle more-vertical" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="text-muted sr-only">Action</span>
+                      </button>
+                      <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" href="#">Edit</a>
+                        <a class="dropdown-item" href="#">Remove</a>
+                        <a class="dropdown-item" href="#">Assign</a>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>2639</td>
+                  <th scope="col">Gardner, Leigh S.</th>
+                  <td>P.O. Box 228, 7512 Lectus Ave</td>
+                  <td>04/08/2019</td>
+                  <td>
+                    <div class="dropdown">
+                      <button class="btn btn-sm dropdown-toggle more-vertical" type="button" id="dr4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="text-muted sr-only">Action</span>
+                      </button>
+                      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dr4">
+                        <a class="dropdown-item" href="#">Edit</a>
+                        <a class="dropdown-item" href="#">Remove</a>
+                        <a class="dropdown-item" href="#">Assign</a>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>2238</td>
+                  <th scope="col">Higgins, Uriah L.</th>
+                  <td>Ap #377-5357 Sed Road</td>
+                  <td>04/01/2019</td>
+                  <td>
+                    <div class="dropdown">
+                      <button class="btn btn-sm dropdown-toggle more-vertical" type="button" id="dr5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="text-muted sr-only">Action</span>
+                      </button>
+                      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dr5">
+                        <a class="dropdown-item" href="#">Edit</a>
+                        <a class="dropdown-item" href="#">Remove</a>
+                        <a class="dropdown-item" href="#">Assign</a>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
+      </div> <!-- Striped rows -->
     </div>
-    @endif
+</div>
 
 @endsection
-
-@push('scripts')
-    <script src="{{ asset('assets') }}/libs/apexcharts/apexcharts.min.js"></script>
-    <script src="{{ asset('assets') }}/js/pages/dashboard.init.js"></script>
-@endpush

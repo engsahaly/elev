@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\AdminHomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,7 +32,6 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 
-
 /*
 |--------------------------------------------------------------------------
 | Admin Routes
@@ -39,6 +39,8 @@ require __DIR__.'/auth.php';
 |
 */
 Route::prefix('admin')->name('admin.')->group(function () {
+    ##------------------------------------------------------- ADMIN INDEX PAGE
+    Route::get('/', AdminHomeController::class)->name('index');
     
     Route::middleware(['admin'])->group(function () {
         
