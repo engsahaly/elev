@@ -53,6 +53,16 @@ class Admin extends Authenticatable
      */
     const ORDER = ['name', 'email'];
 
+    /**
+     * Upload Path
+     */
+    const UPLOADPATH = 'images/admins/';
+
+    /**
+     * fields that will handle upload document
+     */
+    const UPLOADFIELDS = [];
+
 
     ##--------------------------------- RELATIONSHIPS
 
@@ -71,6 +81,7 @@ class Admin extends Authenticatable
         }
         return $this->name;
     }
+    
 
     ##--------------------------------- SCOPES
     public function scopeAdmin($query)
