@@ -24,4 +24,5 @@ return [
     'delete_image_message'            => 'هل أنت متأكد أنك تريد حذف هذه الصورة ؟',
     'change_status_message'           => "هل أنت متأكد أنك تريد تغيير حالة هذا السجل؟",
     'duplicated'                      => 'هذه القيم موجودة بالفعل !',
+    'current_password_error'          => 'كلمة المرور الحالية غير متطابقة',
 ];
