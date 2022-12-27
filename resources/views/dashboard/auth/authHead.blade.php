@@ -20,10 +20,12 @@
     <link rel="stylesheet" href="{{ asset('assets') }}/css/app-light.css" id="lightTheme">
     <link rel="stylesheet" href="{{ asset('assets') }}/css/app-dark.css" id="darkTheme" disabled>
     <!-- Arabic Font If Needed -->
-    {{-- <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <style>
-        * { font-family: 'Tajawal', sans-serif;}
-    </style> --}}
+    @if (LaravelLocalization::getCurrentLocale() == 'ar')
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+        <style>
+            * { font-family: 'Tajawal', sans-serif;}
+        </style>
+    @endif
   </head>
