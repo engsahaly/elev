@@ -34,6 +34,7 @@ return [
     'date_to'      => 'التاريخ (الى)',
     'profile'        => 'الصفحة الشخصية',
     'copyright_text' => 'الحقوق محفوظة ',
+    'update'         => 'تعديل',
 
     /*
     | AUTH MODULE

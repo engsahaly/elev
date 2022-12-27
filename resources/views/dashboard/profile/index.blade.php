@@ -3,30 +3,10 @@
 @includeIf("$directory.pushStyles")
 
 @section('content')
-    <!-- page title -->
-    <div class="row">
-        <div class="col-12">
-            <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                <h4 class="mb-sm-0 font-size-18">{{ __('lang.profile') }}</h4>
-            </div>
-        </div>
-    </div>
 
-    <div class="card" id="mainCont">
-        <div class="card-body">
-            <div class="d-flex align-items-start">
-                <div class="flex-shrink-0 me-3">
-                    <img src="{{ asset('assets') }}/logo/avatar.png" alt="" class="avatar-md rounded-circle img-thumbnail">
-                </div>
-                <div class="flex-grow-1 align-self-center">
-                    <div class="text-muted">
-                        <h5>{{ Auth::guard('admin')->user()?->name }}</h5>
-                        <p class="mb-1">{{ Auth::guard('admin')->user()?->email }}</p>
-                        <p class="mb-0">{{ __('lang.id_number') }}: {{ Auth::guard('admin')->user()?->id_number }}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <!-- page title -->
+    <div class="col">
+        <h2 class="h5 page-title">{{ __('lang.profile') }}</h2>
     </div>
 
     <div class="card">
@@ -36,9 +16,9 @@
                 @include('dashboard.modals.spinner')
             </div>
 
-            <div class="row">
+            <div class="row p-2">
                 <div class="col-md-6">
-                    <div class="row border-end border-primary me-1 pe-4">
+                    <div class="row border-end border-primary me-1 p-3">
 
                         {{-- profile form --}}
                         <form action="{{ route('admin.profile') }}" method="post" id="information_form" enctype="multipart/form-data">
@@ -70,7 +50,7 @@
                 </div>
 
                 <div class="col-md-6">
-                    <div class="row me-1">
+                    <div class="row me-1 p-3">
                         
                         {{-- Change Password --}}
                         <form class="form" action="{{ route('admin.changePassword') }}" method="post" id="password_form">

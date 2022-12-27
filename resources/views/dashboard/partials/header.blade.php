@@ -23,7 +23,7 @@
         </span>
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="#">{{ __('lang.profile') }}</a>
+            <a class="dropdown-item" href="{{ route('admin.profile') }}">{{ __('lang.profile') }}</a>
             <form action="{{ route('admin.logout') }}" method="POST" class="dropdown-item">
                 @csrf
                 <button type="submit" class="border-0 bg-transparent p-0 text-danger">

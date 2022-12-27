@@ -34,6 +34,7 @@ return [
     'date_to'        => 'Date To',
     'profile'        => 'Profile',
     'copyright_text' => 'All rights reserved to ',
+    'update'         => 'Update',
     
     /*
     | DATATABLE BUTTON NAMES
