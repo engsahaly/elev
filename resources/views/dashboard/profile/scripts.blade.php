@@ -2,14 +2,14 @@
 <script>
     $("document").ready(function(){
         //============================================= LOADER
-        // var $loading = $('#loading').hide();
-        // $(document)
-        // .ajaxStart(function () {
-        //     $loading.show();
-        // })
-        // .ajaxStop(function () {
-        //     $loading.hide();
-        // });
+        var $loading = $('#loading').hide();
+        $(document)
+        .ajaxStart(function () {
+            $loading.show();
+        })
+        .ajaxStop(function () {
+            $loading.hide();
+        });
 
         //============================================= AJAX REQUEST FOR UPDATING INFORMATION
         $(document).on('click', "#submit_information_form", function () {
