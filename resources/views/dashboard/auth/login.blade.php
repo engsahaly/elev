@@ -6,9 +6,14 @@
     <body class="light ">
         <div class="wrapper vh-100">
             <div class="row align-items-center h-100">
+                
                 <form class="col-lg-3 col-md-4 col-10 mx-auto text-center" action="{{ route('admin.login') }}" method="POST">
                     @csrf
-
+                    
+                    <div class="text-center">
+                        @include('dashboard.partials.language')
+                    </div>
+                    
                     {{-- LOGO --}}
                     <a class="navbar-brand mx-auto mt-2 flex-fill text-center" href="{{ route('admin.login') }}">
                         <img src="{{ asset('assets') }}/images/logo.png" alt="Dahsboard Logo">
