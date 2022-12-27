@@ -26,6 +26,7 @@ class UpdateAdminProfileRequest extends FormRequest
     {
         $id = Auth::guard('admin')->user()->id;
         return [
+            'name'                 => 'sometimes|required|string',
             'email'                => 'sometimes|required|unique:admins,email,'.$id,
             'current_password'     => 'sometimes|required',
             'new_password'         => 'sometimes|required|min:6',
@@ -41,6 +42,7 @@ class UpdateAdminProfileRequest extends FormRequest
     public function attributes()
     {
         return [            
+            'name'                 => __('lang.name'),
             'email'                => __('lang.email'),
             'password'             => __('lang.password'),
             'current_password'     => __('lang.current_password'),

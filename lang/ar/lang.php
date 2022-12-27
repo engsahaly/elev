@@ -65,4 +65,5 @@ return [
     'new_password'         => 'كلمة المرور الجديدة',
     'confirm_new_password' => 'تاكيد كلمة المرور الجديدة',
     'profile'              => 'الصفحة الشخصية',
+    'name'                 => 'الاسم',
 ];
