@@ -2,7 +2,7 @@
 <html lang="en">
     @include('dashboard.partials.head')
 
-    <body class="vertical  light  ">
+    <body class="vertical light">
         <div class="wrapper">
 
             @include('dashboard.partials.header')
@@ -22,59 +22,6 @@
         @include('dashboard.modals.mainModal')
         @include('dashboard.modals.deleteModal')
         @include('dashboard.partials.scripts')
-    </body>
-
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!doctype html>
-<html lang="{{ LaravelLocalization::getCurrentLocale() }}" dir="{{LaravelLocalization::getCurrentLocaleDirection()}}">
-
-    @include('dashboard.partials.head')
-
-    <body data-sidebar="dark">
-    <!-- <body data-layout="horizontal" data-topbar="dark"> -->
-
-        <!-- Begin page -->
-        <div id="layout-wrapper">
-            
-            
-
-            
-
-            <div class="main-content">
-                <div class="page-content">
-                    <div class="container-fluid">
-
-                        
-
-                    </div>
-                </div>
-
-                @include('dashboard.partials.footer')
-            </div>
-
-        </div>
-        <!-- END layout-wrapper -->
-
-        
     </body>
 
 </html>
