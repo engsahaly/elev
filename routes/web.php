@@ -29,3 +29,22 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+
+/*
+|--------------------------------------------------------------------------
+| Admin Routes
+|--------------------------------------------------------------------------
+|
+*/
+Route::prefix('admin')->name('admin.')->group(function () {
+    
+    Route::middleware(['admin'])->group(function () {
+        
+        
+        
+    });
+
+    require __DIR__.'/adminAuth.php';
+
+});
