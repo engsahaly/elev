@@ -32,6 +32,7 @@ return [
     'date'         => 'Date',
     'date_from'    => 'Date From',
     'date_to'      => 'Date To',
+    'copyright_text'      => 'All rights reserved to ',
     
     /*
     | DATATABLE BUTTON NAMES

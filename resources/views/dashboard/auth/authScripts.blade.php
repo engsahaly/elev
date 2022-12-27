@@ -1,7 +1,10 @@
-<!-- JAVASCRIPT -->
-<script src="{{ asset('assets') }}/libs/jquery/jquery.min.js"></script>
-<script src="{{ asset('assets') }}/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="{{ asset('assets') }}/libs/metismenu/metisMenu.min.js"></script>
-<script src="{{ asset('assets') }}/libs/simplebar/simplebar.min.js"></script>
-<script src="{{ asset('assets') }}/libs/node-waves/waves.min.js"></script>       
-<script src="{{ asset('assets') }}/js/app.js"></script>
+<script src="{{ asset('assets') }}/js/jquery.min.js"></script>
+<script src="{{ asset('assets') }}/js/popper.min.js"></script>
+<script src="{{ asset('assets') }}/js/moment.min.js"></script>
+<script src="{{ asset('assets') }}/js/bootstrap.min.js"></script>
+<script src="{{ asset('assets') }}/js/simplebar.min.js"></script>
+<script src='{{ asset('assets') }}/js/daterangepicker.js'></script>
+<script src='{{ asset('assets') }}/js/jquery.stickOnScroll.js'></script>
+<script src="{{ asset('assets') }}/js/tinycolor-min.js"></script>
+<script src="{{ asset('assets') }}/js/config.js"></script>
+<script src="{{ asset('assets') }}/js/apps.js"></script>

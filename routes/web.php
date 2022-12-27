@@ -41,6 +41,7 @@ require __DIR__.'/auth.php';
 Route::prefix('admin')->name('admin.')->group(function () {
     ##------------------------------------------------------- ADMIN INDEX PAGE
     Route::get('/', AdminHomeController::class)->name('index');
+    Route::view('/lo', 'dashboard.auth.login');
     
     Route::middleware(['admin'])->group(function () {
         

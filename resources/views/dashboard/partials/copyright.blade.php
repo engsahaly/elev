@@ -1,3 +1,3 @@
 <p class="mb-0">
-    © <script>document.write(new Date().getFullYear())</script> {{ __('lang.company_name') }}
+    {{ __('lang.copyright_text') }} {{ __('lang.company_name') }} - © <script>document.write(new Date().getFullYear())</script>
 </p>
