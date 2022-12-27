@@ -32,4 +32,5 @@
     <style>
         * { font-family: 'Tajawal', sans-serif;}
     </style> --}}
+    @stack('styles')
 </head>
