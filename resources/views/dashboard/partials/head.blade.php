@@ -6,6 +6,8 @@
     <link rel="icon" href="favicon.ico">
     <title>@yield('title')</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="{{ asset('assets') }}/images/favicon.ico">
     <!-- Simple bar CSS -->
     <link rel="stylesheet" href="{{ asset('assets') }}/css/simplebar.css">
     <!-- Fonts CSS -->
