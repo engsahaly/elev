@@ -32,6 +32,8 @@ return [
     'date'         => 'التاريخ',
     'date_from'    => 'التاريخ (من)',
     'date_to'      => 'التاريخ (الى)',
+    'profile'        => 'الصفحة الشخصية',
+    'copyright_text' => 'الحقوق محفوظة ',
 
     /*
     | AUTH MODULE
