@@ -1,37 +1,45 @@
+<?php
+    if (LaravelLocalization::getCurrentLocale() == "ar") {
+        $lang = '-rtl' ;
+    } else {
+        $lang = '' ;
+    }
+?>
+
 @stack('scripts')
 
-<script src="{{ asset('assets') }}/js/jquery.min.js"></script>
-<script src="{{ asset('assets') }}/js/popper.min.js"></script>
-<script src="{{ asset('assets') }}/js/moment.min.js"></script>
-<script src="{{ asset('assets') }}/js/bootstrap.min.js"></script>
-<script src="{{ asset('assets') }}/js/simplebar.min.js"></script>
-<script src='{{ asset('assets') }}/js/daterangepicker.js'></script>
-<script src='{{ asset('assets') }}/js/jquery.stickOnScroll.js'></script>
-<script src="{{ asset('assets') }}/js/tinycolor-min.js"></script>
-<script src="{{ asset('assets') }}/js/config.js"></script>
-<script src="{{ asset('assets') }}/js/d3.min.js"></script>
-<script src="{{ asset('assets') }}/js/topojson.min.js"></script>
-<script src="{{ asset('assets') }}/js/datamaps.all.min.js"></script>
-<script src="{{ asset('assets') }}/js/datamaps-zoomto.js"></script>
-<script src="{{ asset('assets') }}/js/datamaps.custom.js"></script>
-<script src="{{ asset('assets') }}/js/Chart.min.js"></script>
+<script src="{{ asset("assets$lang") }}/js/jquery.min.js"></script>
+<script src="{{ asset("assets$lang") }}/js/popper.min.js"></script>
+<script src="{{ asset("assets$lang") }}/js/moment.min.js"></script>
+<script src="{{ asset("assets$lang") }}/js/bootstrap.min.js"></script>
+<script src="{{ asset("assets$lang") }}/js/simplebar.min.js"></script>
+<script src='{{ asset("assets$lang") }}/js/daterangepicker.js'></script>
+<script src='{{ asset("assets$lang") }}/js/jquery.stickOnScroll.js'></script>
+<script src="{{ asset("assets$lang") }}/js/tinycolor-min.js"></script>
+<script src="{{ asset("assets$lang") }}/js/config.js"></script>
+<script src="{{ asset("assets$lang") }}/js/d3.min.js"></script>
+<script src="{{ asset("assets$lang") }}/js/topojson.min.js"></script>
+<script src="{{ asset("assets$lang") }}/js/datamaps.all.min.js"></script>
+<script src="{{ asset("assets$lang") }}/js/datamaps-zoomto.js"></script>
+<script src="{{ asset("assets$lang") }}/js/datamaps.custom.js"></script>
+<script src="{{ asset("assets$lang") }}/js/Chart.min.js"></script>
 <script>
 /* defind global options */
 Chart.defaults.global.defaultFontFamily = base.defaultFontFamily;
 Chart.defaults.global.defaultFontColor = colors.mutedColor;
 </script>
-<script src="{{ asset('assets') }}/js/gauge.min.js"></script>
-<script src="{{ asset('assets') }}/js/jquery.sparkline.min.js"></script>
-<script src="{{ asset('assets') }}/js/apexcharts.min.js"></script>
-<script src="{{ asset('assets') }}/js/apexcharts.custom.js"></script>
-<script src='{{ asset('assets') }}/js/jquery.mask.min.js'></script>
-<script src='{{ asset('assets') }}/js/select2.min.js'></script>
-<script src='{{ asset('assets') }}/js/jquery.steps.min.js'></script>
-<script src='{{ asset('assets') }}/js/jquery.validate.min.js'></script>
-<script src='{{ asset('assets') }}/js/jquery.timepicker.js'></script>
-<script src='{{ asset('assets') }}/js/dropzone.min.js'></script>
-<script src='{{ asset('assets') }}/js/uppy.min.js'></script>
-<script src='{{ asset('assets') }}/js/quill.min.js'></script>
+<script src="{{ asset("assets$lang") }}/js/gauge.min.js"></script>
+<script src="{{ asset("assets$lang") }}/js/jquery.sparkline.min.js"></script>
+<script src="{{ asset("assets$lang") }}/js/apexcharts.min.js"></script>
+<script src="{{ asset("assets$lang") }}/js/apexcharts.custom.js"></script>
+<script src='{{ asset("assets$lang") }}/js/jquery.mask.min.js'></script>
+<script src='{{ asset("assets$lang") }}/js/select2.min.js'></script>
+<script src='{{ asset("assets$lang") }}/js/jquery.steps.min.js'></script>
+<script src='{{ asset("assets$lang") }}/js/jquery.validate.min.js'></script>
+<script src='{{ asset("assets$lang") }}/js/jquery.timepicker.js'></script>
+<script src='{{ asset("assets$lang") }}/js/dropzone.min.js'></script>
+<script src='{{ asset("assets$lang") }}/js/uppy.min.js'></script>
+<script src='{{ asset("assets$lang") }}/js/quill.min.js'></script>
 <script>
 $('.select2').select2(
 {
@@ -235,7 +243,7 @@ if (uptarg)
     });
 }
 </script>
-<script src="{{ asset('assets') }}/js/apps.js"></script>
+<script src="{{ asset("assets$lang") }}/js/apps.js"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-56159088-1"></script>
 <script>
