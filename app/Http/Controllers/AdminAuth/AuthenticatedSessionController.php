@@ -5,7 +5,6 @@ namespace App\Http\Controllers\AdminAuth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use App\Providers\RouteServiceProvider;
 use App\Http\Requests\Auth\AdminLoginRequest;
 
 class AuthenticatedSessionController extends Controller
