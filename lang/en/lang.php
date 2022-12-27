@@ -56,4 +56,18 @@ return [
     'logout'             => 'Logout',
     'crafted_by'         => 'Crafted with',
     'by'                 => 'by',
+
+    /*
+    | ADMINS MODULE
+    */
+    'admins'               => 'Admins',
+    'add_new_admin'        => 'Add New Admin',
+    'edit_admin'           => 'Edit Admin',
+    'delete_admin'         => 'Delete Admin',
+    'show_admin'           => 'Show Admin',
+    'phone'                => 'Phone',
+    'current_password'     => 'Current Password',
+    'new_password'         => 'New Password',
+    'confirm_new_password' => 'Confirm New Password',
+    'profile'              => 'Profile',
 ];

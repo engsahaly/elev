@@ -51,4 +51,17 @@ return [
     'crafted_by'         => 'تمت البرمجة',
     'by'                 => 'بواسطة',
 
+    /*
+    | ADMINS MODULE
+    */
+    'admins'               => 'الموظفين',
+    'add_new_admin'        => 'اضافة موظف جديد',
+    'edit_admin'           => 'تعديل بيانات الموظف',
+    'delete_admin'         => 'حذف الموظف',
+    'show_admin'           => 'عرض بيانات الموظف',
+    'phone'                => 'الهاتف',
+    'current_password'     => 'كلمة المرور الحالية',
+    'new_password'         => 'كلمة المرور الجديدة',
+    'confirm_new_password' => 'تاكيد كلمة المرور الجديدة',
+    'profile'              => 'الصفحة الشخصية',
 ];

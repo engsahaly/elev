@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminHomeController;
+use App\Http\Controllers\AdminProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,6 +45,13 @@ Route::prefix('admin')->name('admin.')->group(function () {
         
         ##------------------------------------------------------- ADMIN INDEX PAGE
         Route::get('/', AdminHomeController::class)->name('index');
+        
+        ##------------------------------------------------------- ADMIN PROFILE SECTION
+        Route::controller(AdminProfileController::class)->group(function () {
+            Route::get('/profile', [AdminProfileController::class, 'index'])->name('profile');
+            Route::post('/profile', [AdminProfileController::class, 'update'])->name('profile');
+            Route::post('/password', [AdminProfileController::class, 'updatePassword'])->name('changePassword');
+        });
         
     });
 
