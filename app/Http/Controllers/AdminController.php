@@ -86,7 +86,6 @@ class AdminController extends Controller
     public function store(StoreAdminRequest $request)
     {
         $data = $request->validated();
-        $data['status'] = $request->boolean('status') ? AdminStatuses::ACTIVE->value : AdminStatuses::INACTIVE->value ;
         $admin = Admin::create($data);
         if (isset($data['role'])) $admin->assignRole($data['role']); 
         return response()->json(['success'=>__('messages.sent')]);

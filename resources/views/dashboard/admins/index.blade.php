@@ -49,7 +49,7 @@
                                     <td>{{ $item->name }}</td>
                                     <td>{{ $item->email }}</td>
                                     <td>
-                                        <span class="badge bg-warning p-2">
+                                        <span class="badge bg-warning text-white p-2">
                                             {{ $item->getRoleNames()[0] ?? '' }}
                                         </span>
                                     </td>
