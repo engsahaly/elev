@@ -1,5 +1,6 @@
 @extends('dashboard.master')
 @section('title', __('lang.roles'))
+@section('roles_active', 'active bg-light')
 @includeIf("$directory.pushStyles")
 
 @section('content')
@@ -7,7 +8,7 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                <h4 class="mb-sm-0 font-size-18">{{ __('lang.roles') }}</h4>
+                <h2 class="h5 page-title">{{ __('lang.roles') }}</h2>
 
                 <div class="page-title-right">
                     @if (permission(['add_roles']))
