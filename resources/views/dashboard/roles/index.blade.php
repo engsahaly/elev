@@ -65,7 +65,7 @@
                                                 @endif
 
                                                 @if (permission(['delete_roles']))
-                                                <a class="dropdown-item deleteClass" href="{{ route('admin.roles.destroy', ['role' => $item]) }}" data-title="{{ __('lang.delete_role') }}" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                                                <a class="dropdown-item deleteClass" href="{{ route('admin.roles.destroy', ['role' => $item]) }}" data-title="{{ __('lang.delete_role') }}" data-toggle="modal" data-target="#deleteModal">
                                                     <span class="bx bx-trash-alt"></span>
                                                     {{ __('lang.delete') }}
                                                 </a>
