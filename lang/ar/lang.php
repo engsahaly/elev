@@ -66,4 +66,17 @@ return [
     'confirm_new_password' => 'تاكيد كلمة المرور الجديدة',
     'profile'              => 'الصفحة الشخصية',
     'name'                 => 'الاسم',
+
+    /*
+    | ROLES MODULE
+    */
+    'system_management' => 'ادارة النظام',
+    'roles'             => 'المجموعات',
+    'role'              => 'المجموعه',
+    'add_new_role'      => 'اضافة مجموعة جديده',
+    'edit_role'         => 'تعديل بيانات المجموعة',
+    'delete_role'       => 'حذف المجموعة',
+    'show_role'         => 'عرض بيانات المجموعة',
+    'select_role'       => 'اختر المجموعة',
+    'selectAll'         => 'تحديد الكل',
 ];

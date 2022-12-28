@@ -46,6 +46,11 @@ Route::prefix('admin')->name('admin.')->group(function () {
         ##------------------------------------------------------- ADMIN INDEX PAGE
         Route::get('/', AdminHomeController::class)->name('index');
         
+        ##------------------------------------------------------- ROLES MODULE
+        Route::controller(RoleController::class)->group(function () {
+            Route::resource('roles', RoleController::class);
+        });
+        
         ##------------------------------------------------------- ADMIN PROFILE SECTION
         Route::controller(AdminProfileController::class)->group(function () {
             Route::get('/profile', [AdminProfileController::class, 'index'])->name('profile');

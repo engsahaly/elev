@@ -72,4 +72,18 @@ return [
     'confirm_new_password' => 'Confirm New Password',
     'profile'              => 'Profile',
     'name'                 => 'Name',
+
+    /*
+    | ROLES MODULE
+    */
+    'system_management' => 'System Management',
+    'roles'             => 'Roles',
+    'role'              => 'Role',
+    'add_new_role'      => 'Add New Role',
+    'edit_role'         => 'Edit Role',
+    'delete_role'       => 'Delete Role',
+    'show_role'         => 'Show Role',
+    'select_role'       => 'Select Role',
+    'selectAll'         => 'Select All',
+    
 ];

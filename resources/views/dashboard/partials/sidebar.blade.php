@@ -9,6 +9,31 @@
             <img src="{{ asset('assets') }}/images/logo.png" alt="Dahsboard Logo" width="50">
         </a>
     </div>
+
+    <p class="text-muted nav-heading mt-4 mb-1">
+        <span>{{ __('lang.system_management') }}</span>
+    </p>
+    <ul class="navbar-nav flex-fill w-100 mb-2">
+        <li class="nav-item dropdown">
+        <a href="#system_management" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+            <i class="fe fe-home fe-16"></i>
+            <span class="ml-3 item-text">{{ __('lang.system_management') }}</span><span class="sr-only">(current)</span>
+        </a>
+        <ul class="collapse list-unstyled pl-4 w-100" id="system_management">
+            <li class="nav-item @yield('roles_active')">
+            <a class="nav-link pl-3" href="{{ route('admin.roles.index') }}"><span class="ml-1 item-text">{{ __('lang.roles') }}</span></a>
+            </li>
+            <li class="nav-item @yield('admins_active')">
+            <a class="nav-link pl-3" href="./dashboard-analytics.html"><span class="ml-1 item-text">{{ __('lang.admins') }}</span></a>
+            </li>
+        </ul>
+        </li>
+    </ul>
+
+    <p class="text-muted nav-heading mt-4 mb-1">
+        <span>{{ __('lang.divide') }}</span>
+    </p>
+
     <ul class="navbar-nav flex-fill w-100 mb-2">
         <li class="nav-item dropdown">
         <a href="#dashboard" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
