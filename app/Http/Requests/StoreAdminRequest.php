@@ -23,9 +23,16 @@ class StoreAdminRequest extends FormRequest
      */
     public function rules()
     {
-        $id = $this->route()->nationality->id ?? null;
         return [
-            //
+            'name'      => 'required|string|min:5',
+            'email'     => 'required|email|unique:admins,email',
+            'password'  => 'required|min:5|confirmed',
+            'status'    => 'nullable',
+            'id_number' => 'required|unique:admins,id_number',
+            'branch_id' => 'nullable|exists:branches,id',
+            'role'      => 'nullable',
+            'phone'     => 'nullable|unique:admins,phone',
+            'address'   => 'nullable',
         ];
     }
 
@@ -36,8 +43,15 @@ class StoreAdminRequest extends FormRequest
      */
     public function attributes()
     {
-        return [
-            //
+        return [            
+            'name'      => __('lang.name'),
+            'email'     => __('lang.email'),
+            'password'  => __('lang.password'),
+            'status'    => __('lang.status'),
+            'id_number' => __('lang.id_number'),
+            'branch_id' => __('lang.branch'),
+            'phone'     => __('lang.phone'),
+            'address'   => __('lang.address'),
         ];
     }
 }

@@ -3,17 +3,27 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin;
+use App\Models\Branch;
+use App\Enums\AdminStatuses;
+use Illuminate\Http\Request;
+use App\Services\UploadService;
 use App\Http\Requests\StoreAdminRequest;
 use App\Http\Requests\UpdateAdminRequest;
-use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
 
 class AdminController extends Controller
 {
-    const DIRECTORY = 'dashboard.';
+    const DIRECTORY = 'dashboard.admins';    
+    private $uploadService;
 
-    function __construct()
+    function __construct(UploadService $uploadService)
     {
-        //$this->middleware('check_permission:list_')->only(['index']);
+        $this->uploadService = $uploadService;
+        $this->middleware('check_permission:list_admins')->only(['index', 'getData']);
+        $this->middleware('check_permission:add_admins')->only(['create', 'store']);
+        $this->middleware('check_permission:show_admins')->only(['show']);
+        $this->middleware('check_permission:edit_admins')->only(['edit', 'update']);
+        $this->middleware('check_permission:delete_admins')->only(['destroy']);
     }
 
     /**
@@ -24,6 +34,7 @@ class AdminController extends Controller
     public function index(Request $request)
     {
         $data = $this->getData($request->all());
+        $branches = Branch::all();
         return view(self::DIRECTORY.".index", \get_defined_vars())->with('directory', self::DIRECTORY);
     }
 
@@ -41,13 +52,21 @@ class AdminController extends Controller
         $end     = $data['end'] ?? null;
         $word    = $data['word'] ?? null;
         $status  = $data['status'] ?? null;
+        $branch  = $data['branch'] ?? null;
 
-        $data = Admin::
-        when($word != null, function ($q) use ($word) {
-            $q->where('name', 'like', '%'.$word.'%');
-        })
+        $data = Admin::admin()
         ->when($status != null, function ($q) use ($status) {
             $q->where('status', $status);
+        })
+        ->when($branch != null, function ($q) use ($branch) {
+            $q->where('branch_id', $branch);
+        })
+        ->when($word != null, function ($q) use ($word) {
+            $q->where('name', 'like', '%'.$word.'%')
+            ->orWhere('email', 'like', '%'.$word.'%')
+            ->orWhere('id_number', 'like', '%'.$word.'%')
+            ->orWhere('phone', 'like', '%'.$word.'%')
+            ->orWhere('address', 'like', '%'.$word.'%');
         })
         ->when($start != null, function ($q) use ($start) {
             $q->whereDate('created_at', '>=', $start);
@@ -68,19 +87,23 @@ class AdminController extends Controller
      */
     public function create()
     {
+        $activeBranches = Branch::active()->get();
+        $roles = Role::all();
         return view(self::DIRECTORY.".create", get_defined_vars());
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreAdminRequest  $request
+     * @param  \Illuminate\Http\StoreAdminRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreAdminRequest $request)
     {
         $data = $request->validated();
-        $record = Admin::create($data);
+        $data['status'] = $request->boolean('status') ? AdminStatuses::ACTIVE->value : AdminStatuses::INACTIVE->value ;
+        $admin = Admin::create($data);
+        if (isset($data['role'])) $admin->assignRole($data['role']); 
         return response()->json(['success'=>__('messages.sent')]);
     }
 
@@ -92,7 +115,7 @@ class AdminController extends Controller
      */
     public function show(Admin $admin)
     {
-        return view(self::DIRECTORY.".show", \get_defined_vars());
+        if (!$admin->super_admin) return view(self::DIRECTORY.".show", \get_defined_vars());
     }
 
     /**
@@ -103,20 +126,25 @@ class AdminController extends Controller
      */
     public function edit(Admin $admin)
     {
-        return view(self::DIRECTORY.".edit", \get_defined_vars());
+        $activeBranches = Branch::active()->get();
+        $roles = Role::all();
+        if (!$admin->super_admin) return view(self::DIRECTORY.".edit", \get_defined_vars());
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateAdminRequest  $request
+     * @param  \Illuminate\Http\UpdateAdminRequest  $request
      * @param  \App\Models\Admin  $admin
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateAdminRequest $request, Admin $admin)
     {
-        $data = $request->validated();
+        $data = $request->validated();   
+        if($data['password'] == null) unset($data['password']);
+        $data['status'] = $request->boolean('status') ? AdminStatuses::ACTIVE->value : AdminStatuses::INACTIVE->value ;
         $admin->update($data);
+        $admin->syncRoles([$data['role']]);
         return response()->json(['success'=>__('messages.updated')]);
     }
 
@@ -128,6 +156,7 @@ class AdminController extends Controller
      */
     public function destroy(Admin $admin)
     {
+        $admin->syncRoles();
         $admin->delete();
         return response()->json(['success'=>__('messages.deleted')]);
     }

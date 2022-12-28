@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminHomeController;
 use App\Http\Controllers\AdminProfileController;
@@ -50,6 +51,11 @@ Route::prefix('admin')->name('admin.')->group(function () {
         ##------------------------------------------------------- ROLES MODULE
         Route::controller(RoleController::class)->group(function () {
             Route::resource('roles', RoleController::class);
+        });
+        
+        ##------------------------------------------------------- ADMINS MODULE
+        Route::controller(AdminController::class)->group(function () {
+            Route::resource('admins', AdminController::class);
         });
         
         ##------------------------------------------------------- ADMIN PROFILE SECTION
