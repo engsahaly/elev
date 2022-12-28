@@ -87,4 +87,33 @@ return [
     'select_role'       => 'Select Role',
     'selectAll'         => 'Select All',
 
+    /*
+    | PERMISSIONS MODULE
+    */
+    'list_roles'   => 'List Roles',
+    'add_roles'    => 'Add Roles',
+    'edit_roles'   => 'Edit Roles',
+    'delete_roles' => 'Delete Roles',
+    'show_roles'   => 'Show Roles',
+    // ===============================================
+    'list_admins'   => 'List admins',
+    'add_admins'    => 'Add admins',
+    'edit_admins'   => 'Edit admins',
+    'delete_admins' => 'Delete admins',
+    'show_admins'   => 'Show admins',
+
+    /*
+    | PERMISSION DESCRIPTIONS
+    */
+    'list_roles_desc'   => 'Ability to list all roles',
+    'add_roles_desc'    => 'Ability to add new roles',
+    'edit_roles_desc'   => 'Ability to edit existing role',
+    'delete_roles_desc' => 'Ability to delete existing role',
+    'show_roles_desc'   => 'Ability to show specific role details',
+    'list_admins_desc'   => 'Ability to list all admins',
+    'add_admins_desc'    => 'Ability to add new admins',
+    'edit_admins_desc'   => 'Ability to edit existing admin',
+    'delete_admins_desc' => 'Ability to delete existing admin',
+    'show_admins_desc'   => 'Ability to show specific admin details',
+
 ];

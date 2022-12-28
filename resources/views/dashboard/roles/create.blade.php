@@ -47,7 +47,7 @@
                                             <div class="form-check form-check-primary mt-1">
                                                 <input class="form-check-input" type="checkbox" name="permissionArray[{{ $permission->name }}]" id="formCheckcolor{{$permission->id}}">
                                                 <label class="form-check-label" for="formCheckcolor{{$permission->id}}">{{ __("lang.$permission->name") }}</label>
-                                                {{ permission_description($permission) }}
+                                                {{-- {{ permission_description($permission) }} --}}
                                             </div>
                                         @endforeach
                                     </div>

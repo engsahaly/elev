@@ -37,7 +37,7 @@
                                     <div class="d-inline-block">
                                         <label class="form-check-label">{{ __("lang.$permission->name") }}</label>
                                     </div>
-                                    {{ permission_description($permission) }}
+                                    {{-- {{ permission_description($permission) }} --}}
                                 </div>
                                 @endforeach
                             </div>

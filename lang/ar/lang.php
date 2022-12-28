@@ -80,4 +80,33 @@ return [
     'show_role'         => 'عرض بيانات المجموعة',
     'select_role'       => 'اختر المجموعة',
     'selectAll'         => 'تحديد الكل',
+
+    /*
+    | PERMISSIONS MODULE
+    */
+    'list_roles'   => 'اظهار المجموعات',
+    'add_roles'    => 'اضافة المجموعات',
+    'edit_roles'   => 'تعديل المجموعات',
+    'delete_roles' => 'حذف المجموعات',
+    'show_roles'   => 'عرض المجموعات',
+    // ===============================================
+    'list_admins'   => 'اظهار الموظفين',
+    'add_admins'    => 'اضافة الموظفين',
+    'edit_admins'   => 'تعديل الموظفين',
+    'delete_admins' => 'حذف الموظفين',
+    'show_admins'   => 'عرض الموظفين',
+
+    /*
+    | PERMISSION DESCRIPTIONS
+    */
+    'list_roles_desc'   => 'امكانية عرض كل المجموعات',
+    'add_roles_desc'    => 'امكانية اضافة مجموعه جديده',
+    'edit_roles_desc'   => 'امكانية تعديل بيانات المجموعات',
+    'delete_roles_desc' => 'امكانية حذف المجموعات',
+    'show_roles_desc'   => 'امكانية عرض بيانات المجموعه الواحدة',
+    'list_admins_desc'   => 'امكانية عرض كل الموظفين',
+    'add_admins_desc'    => 'امكانية اضافة موظف جديد',
+    'edit_admins_desc'   => 'امكانية تعديل بيانات الموظفين',
+    'delete_admins_desc' => 'امكانية حذف الموظفين',
+    'show_admins_desc'   => 'امكانية عرض بيانات الموظف الواحد',
 ];
