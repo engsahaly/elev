@@ -24,14 +24,11 @@
             <label class="form-label">{{ __('lang.password_confirmation') }}</label>
             <input type="password" class="border form-control" name="password_confirmation" placeholder="{{ __('lang.please_enter') }} {{ __('lang.password_confirmation') }}...">
         </div>
-
     </div>
     {{-- MODIFICATIONS TO HERE --}}
 
-    <hr class="text-muted">
-
-    <div class="form-group float-end">
-            <button type="button" class="btn btn-light" data-bs-dismiss="modal">{{ __('lang.close') }}</button>
-            <button type="button" class="btn btn-primary" id="submit_add_form">{{ __('lang.submit') }}</button>
+    <div class="form-group float-right mt-2">
+        <button type="button" class="btn btn-light" data-dismiss="modal">{{ __('lang.close') }}</button>
+        <button type="button" class="btn btn-primary" id="submit_add_form">{{ __('lang.submit') }}</button>
     </div>
 </form>

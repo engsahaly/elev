@@ -90,23 +90,6 @@ class UserController extends Controller
     }
 
     /**
-     * Store new user from contract.
-     *
-     * @param  \Illuminate\Http\StoreUserRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function storeFromContract(StoreUserRequest $request)
-    {
-        $data = $request->validated();
-        $data['password'] = config('app.default_password') ;
-        foreach (User::UPLOADFIELDS as $field) {
-            $data[$field] = isset($data[$field]) ? $this->uploadService->saveOriginalImage($data[$field], User::UPLOADPATH) : null;
-        }
-        $user = User::create($data);
-        return response()->json(['success'=>__('messages.new_user_added_msg'), 'user_id' => $user->id]);
-    }
-
-    /**
      * Display the specified resource.
      *
      * @param  \App\Models\User  $user
