@@ -43,4 +43,10 @@
         </style>
     @endif
     @stack('styles')
+    <style>
+        .row {
+            padding-right: 15px !important;
+            padding-left: 15px !important;
+        }
+    </style>
 </head>

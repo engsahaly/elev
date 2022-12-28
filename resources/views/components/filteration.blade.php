@@ -56,7 +56,7 @@
                         <div class="row mt-3">
                             <div class="col-md-10"></div>
                             <div class="col-md-2">
-                                <button type="submit" class="btn btn-primary w-50">
+                                <button type="submit" class="btn btn-primary w-100">
                                     {{ __('lang.filter') }}
                                 </button>
                             </div>
