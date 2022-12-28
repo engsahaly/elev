@@ -14,11 +14,9 @@ use Spatie\Permission\Models\Role;
 class AdminController extends Controller
 {
     const DIRECTORY = 'dashboard.admins';    
-    private $uploadService;
 
-    function __construct(UploadService $uploadService)
+    function __construct()
     {
-        $this->uploadService = $uploadService;
         $this->middleware('check_permission:list_admins')->only(['index', 'getData']);
         $this->middleware('check_permission:add_admins')->only(['create', 'store']);
         $this->middleware('check_permission:show_admins')->only(['show']);
@@ -34,7 +32,6 @@ class AdminController extends Controller
     public function index(Request $request)
     {
         $data = $this->getData($request->all());
-        $branches = Branch::all();
         return view(self::DIRECTORY.".index", \get_defined_vars())->with('directory', self::DIRECTORY);
     }
 
@@ -51,22 +48,11 @@ class AdminController extends Controller
         $start   = $data['start'] ?? null;
         $end     = $data['end'] ?? null;
         $word    = $data['word'] ?? null;
-        $status  = $data['status'] ?? null;
-        $branch  = $data['branch'] ?? null;
 
         $data = Admin::admin()
-        ->when($status != null, function ($q) use ($status) {
-            $q->where('status', $status);
-        })
-        ->when($branch != null, function ($q) use ($branch) {
-            $q->where('branch_id', $branch);
-        })
         ->when($word != null, function ($q) use ($word) {
             $q->where('name', 'like', '%'.$word.'%')
-            ->orWhere('email', 'like', '%'.$word.'%')
-            ->orWhere('id_number', 'like', '%'.$word.'%')
-            ->orWhere('phone', 'like', '%'.$word.'%')
-            ->orWhere('address', 'like', '%'.$word.'%');
+            ->orWhere('email', 'like', '%'.$word.'%');
         })
         ->when($start != null, function ($q) use ($start) {
             $q->whereDate('created_at', '>=', $start);

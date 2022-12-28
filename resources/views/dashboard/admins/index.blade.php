@@ -1,9 +1,6 @@
-<?php
-    $admin = Auth::guard('admin')->user();
-?>
-
 @extends('dashboard.master')
 @section('title', __('lang.admins'))
+@section('admins_active', 'active bg-light')
 @includeIf("$directory.pushStyles")
 
 @section('content')
@@ -11,11 +8,11 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                <h4 class="mb-sm-0 font-size-18">{{ __('lang.admins') }}</h4>
+                <h2 class="h5 page-title">{{ __('lang.admins') }}</h2>
 
                 <div class="page-title-right">
                     @if (permission(['add_admins']))
-                    <a href="{{ route('admin.admins.create') }}" data-title="{{ __('lang.add_new_admin') }}" id="add_btn" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#mainModal">
+                    <a href="{{ route('admin.admins.create') }}" data-title="{{ __('lang.add_new_admin') }}" id="add_btn" class="btn btn-primary" data-toggle="modal" data-target="#mainModal">
                         {{ __('lang.add_new') }}
                     </a>
                     @endif
@@ -34,16 +31,13 @@
             {{-- Table --}}
             <div class="table-responsive">
                 <table class="table align-middle table-nowrap font-size-14">
-                    <thead class="table-light">
+                    <thead class="bg-light">
                         <tr>
-                            <th width="5%">#</th>
-                            <th>{{ __('lang.name') }}</th>
-                            <th>{{ __('lang.email') }}</th>
-                            <th>{{ __('lang.id_number') }}</th>
-                            <th>{{ __('lang.phone') }}</th>
-                            <th>{{ __('lang.role') }}</th>
-                            <th width="15%">{{ __('lang.status') }}</th>
-                            <th width="10%">{{ __('lang.actions') }}</th>
+                            <th class="text-primary" width="5%">#</th>
+                            <th class="text-primary">{{ __('lang.name') }}</th>
+                            <th class="text-primary">{{ __('lang.email') }}</th>
+                            <th class="text-primary">{{ __('lang.role') }}</th>
+                            <th class="text-primary" width="11%">{{ __('lang.actions') }}</th>
                         </tr>
                     </thead>
 
@@ -54,42 +48,34 @@
                                     <td>{{ $data['data']->firstItem()+$loop->index }}</td>
                                     <td>{{ $item->name }}</td>
                                     <td>{{ $item->email }}</td>
-                                    <td>{{ $item->id_number ?? '' }}</td>
-                                    <td>{{ $item->phone ?? '' }}</td>
                                     <td>
                                         <span class="badge bg-warning p-2">
                                             {{ $item->getRoleNames()[0] ?? '' }}
                                         </span>
                                     </td>
                                     <td>
-                                        <span class="badge {{ $item->status->color() }}">
-                                            <i class="{{ $item->status->icon() }} font-size-16 align-middle"></i> 
-                                            {{ $item->status->lang() }}
-                                        </span>
-                                    </td>
-                                    <td>
                                         <div class="btn-group">
-                                            <button class="btn btn-info dropdown-toggle btn-sm" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <button class="btn btn-primary dropdown-toggle btn-sm" type="button" data-toggle="dropdown" aria-expanded="false">
                                                 {{ __('lang.actions') }} <i class="mdi mdi-chevron-down"></i>
                                             </button>
                                             <div class="dropdown-menu">
 
                                                 @if (permission(['show_admins']))
-                                                <a href="{{ route('admin.admins.show', ['admin' => $item]) }}" class="dropdown-item displayClass" data-title="{{ __('lang.show_admin') }}" data-bs-toggle="modal" data-bs-target="#mainModal">
+                                                <a href="{{ route('admin.admins.show', ['admin' => $item]) }}" class="dropdown-item displayClass" data-title="{{ __('lang.show_admin') }}" data-toggle="modal" data-target="#mainModal">
                                                     <span class="bx bx-show-alt"></span>
                                                     {{ __('lang.show') }}
                                                 </a>
                                                 @endif
                                                 
                                                 @if (permission(['edit_admins']))
-                                                <a href="{{ route('admin.admins.edit', ['admin' => $item]) }}" class="dropdown-item editClass" data-title="{{ __('lang.edit_admin') }}" data-bs-toggle="modal" data-bs-target="#mainModal">
+                                                <a href="{{ route('admin.admins.edit', ['admin' => $item]) }}" class="dropdown-item editClass" data-title="{{ __('lang.edit_admin') }}" data-toggle="modal" data-target="#mainModal">
                                                     <span class="bx bx-edit-alt"></span>
                                                     {{ __('lang.edit') }}
                                                 </a>
                                                 @endif
 
                                                 @if (permission(['delete_admins']))
-                                                <a class="dropdown-item deleteClass" href="{{ route('admin.admins.destroy', ['admin' => $item]) }}" data-title="{{ __('lang.delete_admin') }}" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                                                <a class="dropdown-item deleteClass" href="{{ route('admin.admins.destroy', ['admin' => $item]) }}" data-title="{{ __('lang.delete_admin') }}" data-toggle="modal" data-target="#deleteModal">
                                                     <span class="bx bx-trash-alt"></span>
                                                     {{ __('lang.delete') }}
                                                 </a>

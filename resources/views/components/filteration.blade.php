@@ -26,7 +26,7 @@
                                 @endif
                             </select>
                         </div>
-                        <div class="row mt-2">
+                        <div class="row mt-2 p-0">
                             <div class="col-md-6">
                                 <label class="label-filter">{{ __('lang.sort') }}</label><br>
                                 <select class="form-control" name="sort">

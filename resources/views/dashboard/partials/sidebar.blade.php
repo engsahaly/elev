@@ -29,7 +29,7 @@
                 @endif
                 @if (permission('list_admins'))
                     <li class="nav-item @yield('admins_active')">
-                    <a class="nav-link pl-3" href="./dashboard-analytics.html"><span class="ml-1 item-text">{{ __('lang.admins') }}</span></a>
+                    <a class="nav-link pl-3" href="{{ route('admin.admins.index') }}"><span class="ml-1 item-text">{{ __('lang.admins') }}</span></a>
                     </li>
                 @endif
             </ul>
