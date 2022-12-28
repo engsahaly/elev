@@ -1,30 +1,15 @@
-## My Ready Template Official Desription
-
 **Created By :** Mahmoud Anwar
 **Email :** Engsahaly@gmail.com
 **Phone :** +2-01000166099
 
-This is the main readme file for my ready dashboard template
-
-This dashboard includes a lot of features already installed and created as below :
-
-```
-Admin Authentication using Laravel Breeze
-Installed Spatie Media Library (you need to preparing models to use it)
-Installed Spatie Permissions (with roles and links to admins in the systme - all you have to do is update PermissionArray.php file in config and seed)
-Permission & Permission description helpers located in (app\http\helpers.php)
-Included Admins module (with basic crud operations)
-Included Roles module (with basic crud operations)
-Included Users module (with basic crud operations)
-Installed mcamara localization (with language switcher with ar & en)
-```
+This is the main readme file for the project
 
 ## Installation
 
 To get started, clone this repository.
 
 ```
-git clone https://github.com/engsahaly/my_ready_admin_template.git 
+git clone https://github.com/engsahaly/elev8.git 
 ```
 
 Next, copy your `.env.example` file as `.env` and configure your Database connection.
@@ -44,6 +29,9 @@ You have to all used packages and load helpers as below.
 
 ```
 composer install
+npm install
+npm run dev
+npm run build
 ```
 
 ## Generate new application key
@@ -70,5 +58,5 @@ You can access admin login page using this url.
 ```
 http://localhost:8000/admin/login
 Email: admin@admin.com
-Password: 123456789 
+Password: 123456789
 ```
