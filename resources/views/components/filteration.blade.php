@@ -1,18 +1,18 @@
 <div class="accordion w-100 mt-2 mb-2" id="accordion1">
     <div class="card shadow">
 
-        <div class="card-header" id="heading1">
-            <a role="button" href="#collapse1" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapse1" class="collapsed font-size-14">
+        <a role="button" href="#collapse1" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapse1" class="collapsed">
+            <div class="card-header" id="heading1">
                 {{ __('lang.filteration') }}
-            </a>
-        </div>
+            </div>
+        </a>
 
         <div div id="collapse1" class="collapse p-3" aria-labelledby="heading1" data-parent="#accordion1">
         
             <form action="{{ url(Request::url()) }}" method="get">
                 <div class="row">
                     {{-- Left Side --}}
-                    <div class="col-sm-12 col-md-3 border-end h-100 rounded">
+                    <div class="col-sm-12 col-md-3 h-100 @if(LaravelLocalization::getCurrentLocale() == 'ar') border-left @else border-right @endif">
                         <div>
                             <label class="label-filter">{{ __('lang.order') }}</label><br>
                             <select class="form-control select2" name="order" style="width: 100%">
@@ -53,10 +53,10 @@
                         {{$slot}}
 
                         {{-- Button --}}
-                        <div class="row mt-2">
+                        <div class="row mt-3">
                             <div class="col-md-10"></div>
                             <div class="col-md-2">
-                                <button type="submit" class="btn btn-primary w-100">
+                                <button type="submit" class="btn btn-primary w-50">
                                     {{ __('lang.filter') }}
                                 </button>
                             </div>

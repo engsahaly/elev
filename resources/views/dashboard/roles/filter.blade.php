@@ -14,8 +14,8 @@
             <div class="col-md-4">
                 <label class="form-label-filteration">{{ __('lang.date') }}</label>
                 <div class="input-daterange input-group" id="datepicker6" data-date-format="yyyy-mm-dd" data-date-autoclose="true" data-provide="datepicker" data-date-container='#datepicker6'>
-                    <input type="text" class="form-control" name="start" placeholder="{{ __('lang.date_from') }}" value="{{ request()->input('start') }}"/>
-                    <input type="text" class="form-control" name="end" placeholder="{{ __('lang.date_to') }}" value="{{ request()->input('end') }}"/>
+                    <input type="text" class="form-control drgpicker" name="start" placeholder="{{ __('lang.date_from') }}" value="{{ request()->input('start') }}"/>
+                    <input type="text" class="form-control drgpicker" name="end" placeholder="{{ __('lang.date_to') }}" value="{{ request()->input('end') }}"/>
                 </div>
             </div>
 
