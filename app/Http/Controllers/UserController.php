@@ -46,8 +46,8 @@ class UserController extends Controller
         $word        = $data['word'] ?? null;
         $status      = $data['status'] ?? null;
 
-        $data = User::with(['approvedContracts', 'contracts'])
-        ->when($status != null, function ($q) use ($status) {
+        $data = User::
+        when($status != null, function ($q) use ($status) {
             $q->where('status', $status);
         })
         ->when($word != null, function ($q) use ($word) {
@@ -85,10 +85,6 @@ class UserController extends Controller
     public function store(StoreUserRequest $request)
     {
         $data = $request->validated();
-        $data['status'] = $request->boolean('status') ? UserStatuses::ACTIVE->value : UserStatuses::INACTIVE->value ;
-        foreach (User::UPLOADFIELDS as $field) {
-            $data[$field] = isset($data[$field]) ? $this->uploadService->saveOriginalImage($data[$field], User::UPLOADPATH) : null;
-        }
         User::create($data);
         return response()->json(['success'=>__('messages.sent')]);
     }
