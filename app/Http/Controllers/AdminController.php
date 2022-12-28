@@ -73,7 +73,6 @@ class AdminController extends Controller
      */
     public function create()
     {
-        $activeBranches = Branch::active()->get();
         $roles = Role::all();
         return view(self::DIRECTORY.".create", get_defined_vars());
     }

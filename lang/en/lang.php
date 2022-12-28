@@ -72,6 +72,7 @@ return [
     'confirm_new_password' => 'Confirm New Password',
     'profile'              => 'Profile',
     'name'                 => 'Name',
+    'password_confirmation' => 'Confirm Password',
 
     /*
     | ROLES MODULE

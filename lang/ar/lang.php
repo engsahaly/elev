@@ -66,6 +66,7 @@ return [
     'confirm_new_password' => 'تاكيد كلمة المرور الجديدة',
     'profile'              => 'الصفحة الشخصية',
     'name'                 => 'الاسم',
+    'password_confirmation' => 'تاكيد كلمة السر',
 
     /*
     | ROLES MODULE
