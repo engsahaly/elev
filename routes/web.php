@@ -48,6 +48,11 @@ Route::prefix('admin')->name('admin.')->group(function () {
         ##------------------------------------------------------- ADMIN INDEX PAGE
         Route::get('/', AdminHomeController::class)->name('index');
         
+        ##------------------------------------------------------- USERS MODULE
+        Route::controller(UserController::class)->group(function () {
+            Route::resource('users', UserController::class);
+        });
+
         ##------------------------------------------------------- ROLES MODULE
         Route::controller(RoleController::class)->group(function () {
             Route::resource('roles', RoleController::class);
