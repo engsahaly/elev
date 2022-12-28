@@ -54,5 +54,8 @@
         .form-label {
             color: blue;
         }
+        .form-group {
+            margin-bottom: 0px !important;
+        }
     </style>
 </head>

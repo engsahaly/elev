@@ -62,12 +62,10 @@
                                             </button>
                                             <div class="dropdown-menu">
 
-                                                @if (permission(['show_admins']))
                                                 <a href="{{ route('admin.admins.show', ['admin' => $item]) }}" class="dropdown-item displayClass" data-title="{{ __('lang.show_admin') }}" data-toggle="modal" data-target="#mainModal">
                                                     <span class="bx bx-show-alt"></span>
                                                     {{ __('lang.show') }}
                                                 </a>
-                                                @endif
                                                 
                                                 @if (permission(['edit_admins']))
                                                 <a href="{{ route('admin.admins.edit', ['admin' => $item]) }}" class="dropdown-item editClass" data-title="{{ __('lang.edit_admin') }}" data-toggle="modal" data-target="#mainModal">
