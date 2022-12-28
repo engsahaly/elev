@@ -72,6 +72,7 @@ return [
     */
     'system_management' => 'ادارة النظام',
     'roles'             => 'المجموعات',
+    'permissions'       => 'الصلاحيات',
     'role'              => 'المجموعه',
     'add_new_role'      => 'اضافة مجموعة جديده',
     'edit_role'         => 'تعديل بيانات المجموعة',

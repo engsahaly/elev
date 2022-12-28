@@ -78,6 +78,7 @@ return [
     */
     'system_management' => 'System Management',
     'roles'             => 'Roles',
+    'permissions'       => 'Permissions',
     'role'              => 'Role',
     'add_new_role'      => 'Add New Role',
     'edit_role'         => 'Edit Role',
@@ -85,5 +86,5 @@ return [
     'show_role'         => 'Show Role',
     'select_role'       => 'Select Role',
     'selectAll'         => 'Select All',
-    
+
 ];
