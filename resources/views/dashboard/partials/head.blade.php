@@ -48,5 +48,8 @@
             padding-right: 15px !important;
             padding-left: 15px !important;
         }
+        .font-size-14 {
+            font-size: 14px !important;
+        }
     </style>
 </head>
