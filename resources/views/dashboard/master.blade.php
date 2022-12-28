@@ -11,9 +11,7 @@
 
             <main role="main" class="main-content">
                 <div class="container-fluid">
-                    <div class="row justify-content-center">
-                        @yield('content')
-                    </div>
+                    @yield('content')
                 </div>
             </main>
 
