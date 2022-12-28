@@ -108,7 +108,6 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        $activeNationalities = Nationality::active()->get();
         return view(self::DIRECTORY.".edit", \get_defined_vars());
     }
 
@@ -123,12 +122,6 @@ class UserController extends Controller
     {
         $data = $request->validated();   
         if($data['password'] == null) unset($data['password']);
-        $data['status'] = $request->boolean('status') ? UserStatuses::ACTIVE->value : UserStatuses::INACTIVE->value ;
-        foreach (User::UPLOADFIELDS as $field) {
-            if (isset($data[$field])) {
-                $data[$field] = $this->uploadService->saveOriginalImage($data[$field], User::UPLOADPATH, $user->id_image);
-            }
-        }
         $user->update($data);
         return response()->json(['success'=>__('messages.updated')]);
     }
