@@ -41,4 +41,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * fields ordering in filteration
+     */
+    const ORDER = ['name', 'email'];
 }
