@@ -110,7 +110,6 @@ class AdminController extends Controller
      */
     public function edit(Admin $admin)
     {
-        $activeBranches = Branch::active()->get();
         $roles = Role::all();
         if (!$admin->super_admin) return view(self::DIRECTORY.".edit", \get_defined_vars());
     }
@@ -124,9 +123,8 @@ class AdminController extends Controller
      */
     public function update(UpdateAdminRequest $request, Admin $admin)
     {
-        $data = $request->validated();   
+        $data = $request->validated(); 
         if($data['password'] == null) unset($data['password']);
-        $data['status'] = $request->boolean('status') ? AdminStatuses::ACTIVE->value : AdminStatuses::INACTIVE->value ;
         $admin->update($data);
         $admin->syncRoles([$data['role']]);
         return response()->json(['success'=>__('messages.updated')]);
