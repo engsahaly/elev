@@ -30,11 +30,11 @@
             {{-- Table --}}
             <div class="table-responsive">
                 <table class="table align-middle table-nowrap font-size-14">
-                    <thead class="table-light">
+                    <thead>
                         <tr>
-                            <th width="5%">#</th>
-                            <th>{{ __('lang.name') }}</th>
-                            <th width="10%">{{ __('lang.actions') }}</th>
+                            <th class="text-primary" width="5%">#</th>
+                            <th class="text-primary">{{ __('lang.name') }}</th>
+                            <th class="text-primary" width="10%">{{ __('lang.actions') }}</th>
                         </tr>
                     </thead>
 
