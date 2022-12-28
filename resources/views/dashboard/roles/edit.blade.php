@@ -1,5 +1,6 @@
 @extends('dashboard.master')
 @section('title', __('lang.edit_role'))
+@section('roles_active', 'active bg-light')
 @includeIf("$directory.pushStyles")
 
 @section('content')
@@ -7,7 +8,7 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                <h4 class="mb-sm-0 font-size-18">{{ __('lang.edit_role') }}</h4>
+                <h2 class="h5 page-title">{{ __('lang.edit_role') }}</h2>
             </div>
         </div>
     </div>
@@ -39,11 +40,11 @@
                     </label>
                 </div>
 
-                <div class="form-group col-12 mt-2">
+                <div class="form-group col-12">
                     <div class="row">
                         @if (count($groups) > 0)
                             @foreach ($groups as $group)
-                                <div class="col-md-6 mt-2 pb-2 border-bottom">
+                                <div class="col-md-6">
                                     <label class="form-label">{{ __("lang.$group->value") }}</label>
                                     @foreach ($group->permissions as $permission)
                                         <div class="form-check form-check-primary mt-1">

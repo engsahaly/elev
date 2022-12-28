@@ -35,7 +35,7 @@
                         <tr>
                             <th class="text-primary" width="5%">#</th>
                             <th class="text-primary">{{ __('lang.name') }}</th>
-                            <th class="text-primary" width="10%">{{ __('lang.actions') }}</th>
+                            <th class="text-primary" width="11%">{{ __('lang.actions') }}</th>
                         </tr>
                     </thead>
 
@@ -47,17 +47,15 @@
                                     <td>{{ $item->name }}</td>
                                     <td>
                                         <div class="btn-group">
-                                            <button class="btn btn-info dropdown-toggle btn-sm" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <button class="btn btn-primary dropdown-toggle btn-sm" type="button" data-toggle="dropdown" aria-expanded="false">
                                                 {{ __('lang.actions') }} <i class="mdi mdi-chevron-down"></i>
                                             </button>
                                             <div class="dropdown-menu">
 
-                                                @if (permission(['show_roles']))
                                                 <a href="{{ route('admin.roles.show', ['role' => $item]) }}" class="dropdown-item">
                                                     <span class="bx bx-show-alt"></span>
                                                     {{ __('lang.show') }}
                                                 </a>
-                                                @endif
                                                 
                                                 @if (permission(['edit_roles']))
                                                 <a href="{{ route('admin.roles.edit', ['role' => $item]) }}" class="dropdown-item">

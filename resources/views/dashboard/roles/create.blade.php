@@ -8,7 +8,7 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                <h2 class="h5 page-title">{{ __('lang.add_new_role') }}</h4>
+                <h2 class="h5 page-title">{{ __('lang.add_new_role') }}</h2>
             </div>
         </div>
     </div>
