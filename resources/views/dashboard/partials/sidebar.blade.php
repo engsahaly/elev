@@ -11,9 +11,46 @@
     </div>
 
     {{-- SYSTEM MANAGEMENT --}}
-    @if (permission('list_roles') || permission('list_admins'))
+    <p class="text-muted nav-heading mt-4 mb-1">
+        <span>{{ __('lang.system_management') }}</span>
+    </p>
+
+    <ul class="navbar-nav flex-fill w-100 mb-2">
+        @if (permission('list_roles') || permission('list_admins'))
+        <li class="nav-item dropdown">
+            <a href="#system_management" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+                <i class="fe fe-home fe-16"></i>
+                <span class="ml-3 item-text">{{ __('lang.system_management') }}</span><span class="sr-only">(current)</span>
+            </a>
+            <ul class="collapse list-unstyled pl-4 w-100" id="system_management">
+                @if (permission('list_roles'))
+                    <li class="nav-item @yield('roles_active')">
+                    <a class="nav-link pl-3" href="{{ route('admin.roles.index') }}"><span class="ml-1 item-text">{{ __('lang.roles') }}</span></a>
+                    </li>
+                @endif
+                @if (permission('list_admins'))
+                    <li class="nav-item @yield('admins_active')">
+                    <a class="nav-link pl-3" href="{{ route('admin.admins.index') }}"><span class="ml-1 item-text">{{ __('lang.admins') }}</span></a>
+                    </li>
+                @endif
+            </ul>
+        </li>
+        @endif
+
+        @if (permission('list_users'))
+        <li class="nav-item w-100 @yield('users_active')">
+            <a class="nav-link" href="{{ route('admin.users.index') }}">
+                <i class="fe fe-users fe-16"></i>
+                <span class="ml-3 item-text">{{ __('lang.users') }}</span>
+            </a>
+        </li>
+        @endif
+    </ul>
+    
+    {{-- USER MANAGEMENT --}}
+    @if (permission('list_users'))
         <p class="text-muted nav-heading mt-4 mb-1">
-            <span>{{ __('lang.system_management') }}</span>
+            <span>{{ __('lang.users') }}</span>
         </p>
         <ul class="navbar-nav flex-fill w-100 mb-2">
             <li class="nav-item dropdown">

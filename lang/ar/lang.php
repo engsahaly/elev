@@ -110,4 +110,17 @@ return [
     'edit_admins_desc'   => 'امكانية تعديل بيانات الموظفين',
     'delete_admins_desc' => 'امكانية حذف الموظفين',
     'show_admins_desc'   => 'امكانية عرض بيانات الموظف الواحد',
+
+    /*
+    | USERS (CLIENTS) MODULE
+    */
+    'users'                 => 'المستخدمين',
+    'add_new_user'          => 'اصافة مستخدم جديد',
+    'edit_user'             => 'تعديل بيانات مستخدم',
+    'delete_user'           => 'حذف بيانات المستخدم',
+    'show_user'             => 'عرض بيانات المستخدم',
+    'email'                 => 'البريد الالكترونى',
+    'password'              => 'كلمة السر',
+    'password_confirmation' => 'تاكيد كلمة السر',
+
 ];

@@ -117,4 +117,16 @@ return [
     'delete_admins_desc' => 'Ability to delete existing admin',
     'show_admins_desc'   => 'Ability to show specific admin details',
 
+    /*
+    | USERS MODULE
+    */
+    'users'                 => 'Users',
+    'add_new_user'          => 'Add New User',
+    'edit_user'             => 'Edit User',
+    'delete_user'           => 'Delete User',
+    'show_user'             => 'Show User',
+    'email'                 => 'Email',
+    'password'              => 'Password',
+    'password_confirmation' => 'Confirm Password',
+
 ];

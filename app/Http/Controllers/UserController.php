@@ -3,21 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Enums\UserStatuses;
-use App\Models\Nationality;
 use Illuminate\Http\Request;
-use App\Services\UploadService;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 
 class UserController extends Controller
 {
     const DIRECTORY = 'dashboard.users';    
-    private $uploadService;
 
-    function __construct(UploadService $uploadService)
+    function __construct()
     {
-        $this->uploadService = $uploadService;
         $this->middleware('check_permission:list_users')->only(['index', 'getData']);
         $this->middleware('check_permission:add_users')->only(['create', 'store']);
         $this->middleware('check_permission:show_users')->only(['show']);
@@ -33,7 +28,6 @@ class UserController extends Controller
     public function index(Request $request)
     {
         $data = $this->getData($request->all());
-        $nationalities = Nationality::all();
         return view(self::DIRECTORY.".index", \get_defined_vars())->with('directory', self::DIRECTORY);
     }
 
@@ -51,22 +45,14 @@ class UserController extends Controller
         $end         = $data['end'] ?? null;
         $word        = $data['word'] ?? null;
         $status      = $data['status'] ?? null;
-        $nationality = $data['nationality'] ?? null;
 
         $data = User::with(['approvedContracts', 'contracts'])
         ->when($status != null, function ($q) use ($status) {
             $q->where('status', $status);
         })
-        ->when($nationality != null, function ($q) use ($nationality) {
-            $q->where('nationality_id', $nationality);
-        })
         ->when($word != null, function ($q) use ($word) {
             $q->where('name', 'like', '%'.$word.'%')
-            ->orWhere('id_number', 'like', '%'.$word.'%')
-            ->orWhere('phone1', 'like', '%'.$word.'%')
-            ->orWhere('phone2', 'like', '%'.$word.'%')
-            ->orWhere('address', 'like', '%'.$word.'%')
-            ->orWhere('payment_number', 'like', '%'.$word.'%');
+            ->orWhere('email', 'like', '%'.$word.'%');
         })
         ->when($start != null, function ($q) use ($start) {
             $q->whereDate('created_at', '>=', $start);
