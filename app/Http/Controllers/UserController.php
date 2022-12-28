@@ -73,7 +73,6 @@ class UserController extends Controller
      */
     public function create()
     {
-        $activeNationalities = Nationality::active()->get();
         return view(self::DIRECTORY.".create", get_defined_vars());
     }
 
