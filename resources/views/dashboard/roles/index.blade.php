@@ -31,7 +31,7 @@
             {{-- Table --}}
             <div class="table-responsive">
                 <table class="table align-middle table-nowrap font-size-14">
-                    <thead>
+                    <thead class="bg-light">
                         <tr>
                             <th class="text-primary" width="5%">#</th>
                             <th class="text-primary">{{ __('lang.name') }}</th>
