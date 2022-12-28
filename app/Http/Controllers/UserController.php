@@ -134,38 +134,7 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        $this->uploadService->deleteImage($user->id_image);
         $user->delete();
         return response()->json(['success'=>__('messages.deleted')]);
-    }
-
-    /**
-     * Get User details.
-     *
-     * @param  \App\Http\Requests\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function getUser(Request $request)
-    {
-        $id_number = $request->input('id_number');
-        $user = User::with('contracts', 'approvedContracts')->where('id_number', $id_number)->first();
-        if (!$user) return response()->json(['failed'=>__('messages.no_user_found')]);
-        if ($user->status == UserStatuses::INACTIVE) return response()->json(['failed'=>__('messages.user_not-active')]);
-        return response()->json(['success'=>$user]);
-    }
-
-    /**
-     * Get User Or create new one in contract creation & updating details.
-     *
-     * @param  \App\Http\Requests\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function getUserFromContract(Request $request)
-    {
-        $id_number = $request->input('id_number');
-        $user = User::with('contracts', 'approvedContracts')->where('id_number', $id_number)->first();
-        if (!$user) return response()->json(['failedAndCreate'=>__('messages.no_user_found')]);
-        if ($user->status == UserStatuses::INACTIVE) return response()->json(['failed'=>__('messages.user_not-active')]);
-        return response()->json(['success'=>$user]);
     }
 }

@@ -3,10 +3,11 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
@@ -46,4 +47,41 @@ class User extends Authenticatable
      * fields ordering in filteration
      */
     const ORDER = ['name', 'email'];
+
+     ##--------------------------------- RELATIONSHIPS
+
+
+    ##--------------------------------- ATTRIBUTES
+
+    
+    ##--------------------------------- CUSTOM FUNCTIONS
+    public function nameOnHeader()
+    {
+        if (strlen($this->name) > 10) {
+            return \substr($this->name, 0, 10) . '..';
+        }
+        return $this->name;
+    }
+    
+
+    ##--------------------------------- SCOPES
+
+
+    ##--------------------------------- ACCESSORS & MUTATORS    
+    /**
+     * Interact with the user's password
+     *
+     * @return \Illuminate\Database\Eloquent\Casts\Attribute
+     */
+    protected function password(): Attribute
+    {
+        return Attribute::make(
+            set: function ($value) {
+                if ($value != null) {
+                    return bcrypt($value);
+                }
+            },
+        );
+    }
+
 }
