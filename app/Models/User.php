@@ -84,6 +84,10 @@ class User extends Authenticatable
     
 
     ##--------------------------------- SCOPES
+    public function scopeRelative($query)
+    {
+        if (Auth::guard('admin')->user()->type == 'admin') $query->where('admin_id', Auth::guard('admin')->user()->id);
+    }
 
 
     ##--------------------------------- ACCESSORS & MUTATORS    

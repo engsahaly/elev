@@ -49,8 +49,8 @@ class UserController extends Controller
         $word        = $data['word'] ?? null;
         $status      = $data['status'] ?? null;
 
-        $data = User::
-        when($status != null, function ($q) use ($status) {
+        $data = User::relative()
+        ->when($status != null, function ($q) use ($status) {
             $q->where('status', $status);
         })
         ->when($word != null, function ($q) use ($word) {
