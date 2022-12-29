@@ -103,6 +103,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
+        $this->check($user);
         return view(self::DIRECTORY.".show", \get_defined_vars());
     }
 
@@ -114,6 +115,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
+        $this->check($user);
         $admins = Admin::admin()->get();
         return view(self::DIRECTORY.".edit", \get_defined_vars());
     }
@@ -143,7 +145,19 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
+        $this->check($user);
         $user->delete();
         return response()->json(['success'=>__('messages.deleted')]);
+    }
+
+    /**
+     * Check Authorization
+     *
+     * @param  \App\Models\User  $user
+     * @return \Illuminate\Http\Response
+     */
+    public function check(User $user)
+    {
+        if (!super_admin_permission() && $user->admin_id != Auth::guard('admin')->user()->id) abort(403);
     }
 }
