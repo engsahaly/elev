@@ -25,9 +25,11 @@ class UpdateUserRequest extends FormRequest
     {
         $id = $this->route()->user->id ?? null;
         return [
-            'name'           => 'required|string',
-            'email'          => 'required|email|unique:users,email,'.$id,
-            'password'       => 'nullable|min:5|confirmed',
+            'name'     => 'required|string',
+            'email'    => 'required|email|unique:users,email,'.$id,
+            'password' => 'nullable|min:5|confirmed',
+            'status'   => 'nullable',
+            'admin_id' => 'sometimes|required|exists:admins,id',
         ];
     }
 
@@ -39,9 +41,11 @@ class UpdateUserRequest extends FormRequest
     public function attributes()
     {
         return [            
-            'name'           => __('lang.name'),
-            'email'          => __('lang.email'),
-            'password'       => __('lang.password'),
+            'name'     => __('lang.name'),
+            'email'    => __('lang.email'),
+            'password' => __('lang.password'),
+            'status'   => __('lang.status'),
+            'admin_id' => __('lang.admin'),
         ];
     }
 }

@@ -114,6 +114,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
+        $admins = Admin::admin()->get();
         return view(self::DIRECTORY.".edit", \get_defined_vars());
     }
 
@@ -126,7 +127,9 @@ class UserController extends Controller
      */
     public function update(UpdateUserRequest $request, User $user)
     {
-        $data = $request->validated();   
+        $data = $request->validated();
+        $data['status'] = $request->boolean('status') ? UserStatuses::ACTIVE->value : UserStatuses::INACTIVE->value ;
+        $data['admin_id'] = $request->has('admin_id') ? $request->admin_id : Auth::guard('admin')->user()->id ;
         if($data['password'] == null) unset($data['password']);
         $user->update($data);
         return response()->json(['success'=>__('messages.updated')]);

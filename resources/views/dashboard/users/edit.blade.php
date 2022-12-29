@@ -25,6 +25,27 @@
             <label class="form-label">{{ __('lang.password_confirmation') }}</label>
             <input type="password" class="border form-control" name="password_confirmation" placeholder="{{ __('lang.please_enter') }} {{ __('lang.password_confirmation') }}...">
         </div>
+
+        @if (super_admin_permission())
+            <div class="form-group col-10">
+                <label class="form-label">{{ __('lang.admin') }}</label>
+                <select class="border form-control" name="admin_id">
+                    <option value="">{{ __('lang.select_admin') }}</option>
+                    @foreach ($admins as $item)
+                        <option value="{{$item->id}}" @selected($user->admin_id == $item->id)>{{ $item->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+        @endif
+
+        <div class="form-group col-2">
+            <label class="form-label">{{ __('lang.status') }}</label>
+            <div class="form-check form-switch form-switch-md mb-3">
+                <input class="form-check-input" type="checkbox" name="status" value="1" @checked($user->status == App\Enums\UserStatuses::ACTIVE)>
+                <label>{{ __('lang.active') }}</label>
+            </div>
+        </div>
+
     </div>
     {{-- MODIFICATIONS TO HERE --}}
 
