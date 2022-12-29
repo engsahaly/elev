@@ -5,6 +5,7 @@ use App\Http\Controllers\CallController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\VisitController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminHomeController;
 use App\Http\Controllers\AdminProfileController;
@@ -50,6 +51,11 @@ Route::prefix('admin')->name('admin.')->group(function () {
         ##------------------------------------------------------- ADMIN INDEX PAGE
         Route::get('/', AdminHomeController::class)->name('index');
         
+        ##------------------------------------------------------- VISITS MODULE
+        Route::controller(VisitController::class)->group(function () {
+            Route::resource('visits', VisitController::class)->only('store');
+        });
+
         ##------------------------------------------------------- CALLS MODULE
         Route::controller(CallController::class)->group(function () {
             Route::resource('calls', CallController::class)->only('store');
