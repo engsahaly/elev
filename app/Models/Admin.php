@@ -64,6 +64,15 @@ class Admin extends Authenticatable
 
 
     ##--------------------------------- RELATIONSHIPS
+    public function users()
+    {
+        return $this->hasMany(User::class, 'admin_id', 'id');
+    }
+
+    public function createdUsers()
+    {
+        return $this->hasMany(Admin::class, 'created_by', 'id');
+    }
 
 
     ##--------------------------------- ATTRIBUTES
