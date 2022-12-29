@@ -160,4 +160,16 @@ class UserController extends Controller
     {
         if (!super_admin_permission() && $user->admin_id != Auth::guard('admin')->user()->id) abort(403);
     }
+    
+    /**
+     * Actions Logic
+     *
+     * @param  \App\Models\User  $user
+     * @return \Illuminate\Http\Response
+     */
+    public function actions(User $user, $action)
+    {
+        $this->check($user);
+        return view(self::DIRECTORY.".".$action, \get_defined_vars());
+    }
 }

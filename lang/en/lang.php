@@ -140,5 +140,9 @@ return [
 
     'select_admin'              => 'Select Admin',
     'admin'              => 'Admin',
+    'add_call'              => 'Add Call',
+    'call_user'              => 'Call User',
+    'data'              => 'Data',
+    'user_id'              => 'User',
 
 ];

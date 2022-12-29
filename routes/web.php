@@ -52,11 +52,12 @@ Route::prefix('admin')->name('admin.')->group(function () {
         
         ##------------------------------------------------------- CALLS MODULE
         Route::controller(CallController::class)->group(function () {
-            Route::resource('calls', CallController::class)->only(['create', 'store']);
+            Route::resource('calls', CallController::class)->only('store');
         });
-        
+
         ##------------------------------------------------------- USERS MODULE
-        Route::controller(UserController::class)->group(function () {
+        Route::controller(UserController::class)->group(function () {            
+            Route::get('/actions/{user}/{action}', [UserController::class, 'actions'])->name('users.actions');
             Route::resource('users', UserController::class);
         });
 

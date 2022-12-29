@@ -23,9 +23,9 @@ class StoreCallRequest extends FormRequest
      */
     public function rules()
     {
-        $id = $this->route()->nationality->id ?? null;
         return [
-            //
+            'data' => 'required',
+            'user_id' => 'required|exists:users,id',
         ];
     }
 
@@ -37,7 +37,8 @@ class StoreCallRequest extends FormRequest
     public function attributes()
     {
         return [
-            //
+            'data'    => __('lang.data'),
+            'user_id' => __('lang.user_id'),
         ];
     }
 }

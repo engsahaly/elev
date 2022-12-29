@@ -182,5 +182,26 @@
                 }
             }) ;
         });
+
+        //============================================= SCRIPT FOR SHOWING ACTION MODAL
+        $(document).on('click', ".actionClass", function (e) {
+            e.preventDefault();
+            let url = $(this).attr("href");
+            let title = $(this).attr("data-title");
+            $("#modal-title").html(title);
+            $.ajax({
+                url: url,
+                method: "get",
+                success: function(data){
+                    $("#modal-body").html(data);
+                },
+                error: function(){
+                    alert("Please try again ... ");
+                }
+            });
+        });
+
+
+
     });
 </script>

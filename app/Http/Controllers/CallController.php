@@ -14,17 +14,7 @@ class CallController extends Controller
 
     function __construct()
     {
-        $this->middleware('check_permission:add_calls')->only(['create', 'store']);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view(self::DIRECTORY.".create", get_defined_vars());
+        $this->middleware('check_permission:add_calls')->only(['store']);
     }
 
     /**

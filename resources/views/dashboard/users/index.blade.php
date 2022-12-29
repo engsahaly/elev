@@ -84,6 +84,13 @@
                                                 </a>
                                                 @endif
 
+                                                @if (permission(['add_calls']))
+                                                <a class="dropdown-item actionClass" href="{{ route('admin.users.actions', ['user' => $item, 'action' => 'call']) }}" data-title="{{ __('lang.call_user') }}" data-toggle="modal" data-target="#mainModal">
+                                                    <span class="bx bx-trash-alt"></span>
+                                                    {{ __('lang.add_call') }}
+                                                </a>
+                                                @endif
+
                                             </div>
                                         </div>
                                     </td>
