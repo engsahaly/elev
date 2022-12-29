@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -12,6 +13,11 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
+
+    public function __construct()
+    {
+        $this->attributes['created_by'] = Auth::guard('admin')->user()->id;
+    }
 
     /**
      * The attributes that are mass assignable.
@@ -22,6 +28,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'admin_id',
+        'created_by',
     ];
 
     /**
@@ -48,8 +56,16 @@ class User extends Authenticatable
      */
     const ORDER = ['name', 'email'];
 
-     ##--------------------------------- RELATIONSHIPS
+    ##--------------------------------- RELATIONSHIPS
+    public function admin()
+    {
+        return $this->belongsTo(Admin::class, 'admin_id', 'id');
+    }
 
+    public function creator()
+    {
+        return $this->belongsTo(Admin::class, 'created_by', 'id');
+    }
 
     ##--------------------------------- ATTRIBUTES
 
@@ -80,6 +96,20 @@ class User extends Authenticatable
                 if ($value != null) {
                     return bcrypt($value);
                 }
+            },
+        );
+    }
+    
+    /**
+     * Interact with the created by field
+     *
+     * @return \Illuminate\Database\Eloquent\Casts\Attribute
+     */
+    protected function createdBy(): Attribute
+    {
+        return Attribute::make(
+            set: function ($value) {
+                return Auth::guard('admin')->user()->id;
             },
         );
     }

@@ -26,5 +26,18 @@ return [
             'delete_admins',
         ],
     ],
+
+    // USERS
+    [
+        'group_name' => 'Users',
+        'group_value' => 'users',
+        'permissions' => [
+            'list_users',
+            'add_users',
+            'edit_users',
+            'show_users',
+            'delete_users',
+        ],
+    ],
     
 ];

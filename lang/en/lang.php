@@ -102,6 +102,12 @@ return [
     'edit_admins'   => 'Edit admins',
     'delete_admins' => 'Delete admins',
     'show_admins'   => 'Show admins',
+    // ===============================================
+    'list_users'   => 'List users',
+    'add_users'    => 'Add users',
+    'edit_users'   => 'Edit users',
+    'delete_users' => 'Delete users',
+    'show_users'   => 'Show users',
 
     /*
     | PERMISSION DESCRIPTIONS
@@ -120,11 +126,11 @@ return [
     /*
     | USERS MODULE
     */
-    'users'                 => 'Users',
-    'add_new_user'          => 'Add New User',
-    'edit_user'             => 'Edit User',
-    'delete_user'           => 'Delete User',
-    'show_user'             => 'Show User',
+    'users'                 => 'Customers',
+    'add_new_user'          => 'Add New Customer',
+    'edit_user'             => 'Edit Customer',
+    'delete_user'           => 'Delete Customer',
+    'show_user'             => 'Show Customer',
     'email'                 => 'Email',
     'password'              => 'Password',
     'password_confirmation' => 'Confirm Password',

@@ -41,7 +41,7 @@
                         <div class="row">
                             @if (count($groups) > 0)
                                 @foreach ($groups as $group)
-                                    <div class="col-md-6">
+                                    <div class="col-md-6 mt-2">
                                         <label class="form-label">{{ __("lang.$group->value") }}</label>
                                         @foreach ($group->permissions as $permission)
                                             <div class="form-check form-check-primary mt-1">
