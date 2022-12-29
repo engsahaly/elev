@@ -48,5 +48,14 @@ return [
             'add_calls',
         ],
     ],
+
+    // VISITS
+    [
+        'group_name' => 'Visits',
+        'group_value' => 'visits',
+        'permissions' => [
+            'add_visits',
+        ],
+    ],
     
 ];

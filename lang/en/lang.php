@@ -142,6 +142,8 @@ return [
     'admin'              => 'Admin',
     'add_call'              => 'Add Call',
     'call_user'              => 'Call User',
+    'add_visit'              => 'Add Visit',
+    'visit_user'              => 'Visit User',
     'data'              => 'Data',
     'user_id'              => 'User',
 

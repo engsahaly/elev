@@ -91,6 +91,13 @@
                                                 </a>
                                                 @endif
 
+                                                @if (permission(['add_visits']))
+                                                <a class="dropdown-item actionClass" href="{{ route('admin.users.actions', ['user' => $item, 'action' => 'visit']) }}" data-title="{{ __('lang.visit_user') }}" data-toggle="modal" data-target="#mainModal">
+                                                    <span class="bx bx-trash-alt"></span>
+                                                    {{ __('lang.add_visit') }}
+                                                </a>
+                                                @endif
+
                                             </div>
                                         </div>
                                     </td>
