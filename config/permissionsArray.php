@@ -39,5 +39,14 @@ return [
             'delete_users',
         ],
     ],
+
+    // CALLS
+    [
+        'group_name' => 'Calls',
+        'group_value' => 'calls',
+        'permissions' => [
+            'add_calls',
+        ],
+    ],
     
 ];
