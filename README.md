@@ -2,14 +2,14 @@
 **Email :** Engsahaly@gmail.com
 **Phone :** +2-01000166099
 
-This is the main readme file for the project
+This is the main readme file for this repo
 
 ## Installation
 
 To get started, clone this repository.
 
 ```
-git clone https://github.com/engsahaly/elev8.git 
+git clone https://github.com/engsahaly/elev.git 
 ```
 
 Next, copy your `.env.example` file as `.env` and configure your Database connection.

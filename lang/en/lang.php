@@ -5,7 +5,7 @@ return [
     /*
     | PUBLIC NAMES
     */
-    'company_name'   => 'Elev 8',
+    'company_name'   => 'Elev',
     'home'           => 'Home',
     'actions'        => 'Actions',
     'created_at'     => 'Created At',
