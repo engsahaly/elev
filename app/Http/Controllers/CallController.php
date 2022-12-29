@@ -3,19 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\Call;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCallRequest;
 use App\Http\Requests\UpdateCallRequest;
+use Illuminate\Http\Request;
 
 class CallController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    const DIRECTORY = 'dashboard.calls';
+
+    function __construct()
     {
-        //
+        $this->middleware('check_permission:add_calls')->only(['create', 'store']);
     }
 
     /**
@@ -25,7 +24,7 @@ class CallController extends Controller
      */
     public function create()
     {
-        //
+        return view(self::DIRECTORY.".create", get_defined_vars());
     }
 
     /**
@@ -36,51 +35,8 @@ class CallController extends Controller
      */
     public function store(StoreCallRequest $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Call  $call
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Call $call)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Call  $call
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Call $call)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateCallRequest  $request
-     * @param  \App\Models\Call  $call
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateCallRequest $request, Call $call)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Call  $call
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Call $call)
-    {
-        //
+        $data = $request->validated();
+        $record = Call::create($data);
+        return response()->json(['success'=>__('messages.sent')]);
     }
 }

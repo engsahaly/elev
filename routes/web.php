@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CallController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
@@ -48,6 +49,11 @@ Route::prefix('admin')->name('admin.')->group(function () {
         
         ##------------------------------------------------------- ADMIN INDEX PAGE
         Route::get('/', AdminHomeController::class)->name('index');
+        
+        ##------------------------------------------------------- CALLS MODULE
+        Route::controller(CallController::class)->group(function () {
+            Route::resource('calls', CallController::class)->only(['create', 'store']);
+        });
         
         ##------------------------------------------------------- USERS MODULE
         Route::controller(UserController::class)->group(function () {

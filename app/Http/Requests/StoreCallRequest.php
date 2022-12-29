@@ -13,7 +13,7 @@ class StoreCallRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,6 +22,19 @@ class StoreCallRequest extends FormRequest
      * @return array<string, mixed>
      */
     public function rules()
+    {
+        $id = $this->route()->nationality->id ?? null;
+        return [
+            //
+        ];
+    }
+
+    /**
+     * Attributes .
+     *
+     * @return array
+     */
+    public function attributes()
     {
         return [
             //
