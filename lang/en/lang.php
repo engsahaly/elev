@@ -134,5 +134,11 @@ return [
     'email'                 => 'Email',
     'password'              => 'Password',
     'password_confirmation' => 'Confirm Password',
+    'status'                => 'Status',
+    'active'                => 'Active',
+    'inactive'              => 'In Active',
+
+    'select_admin'              => 'Select Admin',
+    'admin'              => 'Admin',
 
 ];

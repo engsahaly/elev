@@ -12,6 +12,14 @@ function permission($permission)
 }
 
 /**
+ * Check Permissions of Admin Guard User
+ */
+function super_admin_permission()
+{
+    return (Auth::guard('admin')->user()?->type == 'super_admin')  ? true : false;
+}
+
+/**
  * permission description indicator
  */
 function permission_description($permission)

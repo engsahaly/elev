@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Admin;
+use App\Enums\UserStatuses;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 
@@ -73,6 +76,7 @@ class UserController extends Controller
      */
     public function create()
     {
+        $admins = Admin::admin()->get();
         return view(self::DIRECTORY.".create", get_defined_vars());
     }
 
@@ -85,6 +89,8 @@ class UserController extends Controller
     public function store(StoreUserRequest $request)
     {
         $data = $request->validated();
+        $data['status'] = $request->boolean('status') ? UserStatuses::ACTIVE->value : UserStatuses::INACTIVE->value ;
+        $data['admin_id'] = $request->has('admin_id') ? $request->admin_id : Auth::guard('admin')->user()->id ;
         User::create($data);
         return response()->json(['success'=>__('messages.sent')]);
     }

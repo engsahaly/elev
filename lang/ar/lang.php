@@ -122,5 +122,8 @@ return [
     'email'                 => 'البريد الالكترونى',
     'password'              => 'كلمة السر',
     'password_confirmation' => 'تاكيد كلمة السر',
+    'status'              => 'الحالة',
+    'active'                => 'مفعل',
+    'inactive'              => 'غير مفعل',
 
 ];
