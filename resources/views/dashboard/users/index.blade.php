@@ -36,6 +36,8 @@
                             <th class="text-primary" width="5%">#</th>
                             <th class="text-primary">{{ __('lang.name') }}</th>
                             <th class="text-primary">{{ __('lang.email') }}</th>
+                            <th class="text-primary">{{ __('lang.admin') }}</th>
+                            <th class="text-primary" width="15%">{{ __('lang.status') }}</th>
                             <th class="text-primary" width="11%">{{ __('lang.actions') }}</th>
                         </tr>
                     </thead>
@@ -47,6 +49,13 @@
                                     <td>{{ $data['data']->firstItem()+$loop->index }}</td>
                                     <td>{{ $item->name }}</td>
                                     <td>{{ $item->email ?? '' }}</td>
+                                    <td>{{ $item->admin->name ?? '' }}</td>
+                                    <td>
+                                        <span class="text-white badge {{ $item->status->color() }}">
+                                            <i class="{{ $item->status->icon() }}"></i> 
+                                            {{ $item->status->lang() }}
+                                        </span>
+                                    </td>
                                     <td>
                                         <div class="btn-group">
                                             <button class="btn btn-primary dropdown-toggle btn-sm" type="button" data-toggle="dropdown" aria-expanded="false">

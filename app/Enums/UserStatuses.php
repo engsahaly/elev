@@ -12,7 +12,7 @@ enum UserStatuses: int
         return match($this)
         {
             self::ACTIVE => 'bg-success',
-            self::INACTIVE => 'bg-danger',
+            self::INACTIVE => 'bg-warning',
         };
     }
 
@@ -20,8 +20,8 @@ enum UserStatuses: int
     {
         return match($this)
         {
-            self::ACTIVE => 'fe fe-check fe-16',
-            self::INACTIVE => 'fe fe-x fe-16',
+            self::ACTIVE => 'fe fe-check fe-12',
+            self::INACTIVE => 'fe fe-x fe-12',
         };
     }
 
