@@ -30,6 +30,7 @@ class User extends Authenticatable
         'password',
         'admin_id',
         'created_by',
+        'status',
     ];
 
     /**
@@ -49,6 +50,7 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'status' => UserStatuses::class,
     ];
 
     /**
